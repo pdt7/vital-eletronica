@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using SVC_1.entidades;
+using System.Windows.Forms;
+
+namespace SVC_1.repositorio
+{
+    class OrdemServicoDAO : DAO
+    {
+
+        public int cadastrar(OrdemServico ordemServico)
+        {
+
+            int idOrdemServico = 0;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+
+                String strCmd = " INSERT INTO ordem_servico(aparelho, marca, modelo, sintoma, observacoes, " +
+                                   " info_adicional, data_entrada, data_saida, valor, id_cliente) " +
+                                " VALUES (@aparelho, @marca, @modelo, @sintoma, @observacoes, " +
+                                " @info_adicional, @data_entrada, @data_saida, @valor, @id_cliente);";
+
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@aparelho", ordemServico.Aparelho);
+                cmd.Parameters.AddWithValue("@marca", ordemServico.Marca);
+                cmd.Parameters.AddWithValue("@modelo", ordemServico.Modelo);
+                cmd.Parameters.AddWithValue("@sintoma", ordemServico.Sintoma);
+                cmd.Parameters.AddWithValue("@observacoes", ordemServico.Obs);
+                cmd.Parameters.AddWithValue("@info_adicional", "");
+                cmd.Parameters.AddWithValue("@data_entrada", ordemServico.DataEntrada);
+                cmd.Parameters.AddWithValue("@data_saida", ordemServico.DataSaida);
+                cmd.Parameters.AddWithValue("@valor", ordemServico.Valor);
+                cmd.Parameters.AddWithValue("@id_cliente", ordemServico.Cliente.IdCliente);
+               
+                OpenConnection();
+                idOrdemServico = Insere(cmd, strCmd);
+                CloseConnection();
+                return idOrdemServico;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao Cadastrar a Ordem de Serviço. Favor contactar o suporte!!!");
+            }
+        }
+    }
+}

@@ -1,0 +1,247 @@
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\bin\Debug\SVC_1.exe.config
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroCategoria.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroEntrada.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroFornecedor.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroProduto.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroSaida.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUsuario.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUtilizacao.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioIdentificacao.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioVerificarEstoque.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.Properties.Resources.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoAF.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoCP.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioEntrada.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioSaida.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.TelaInicial.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.csproj.GenerateResource.Cache
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\RdlCompile.cache
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\RdlCompile.compiled
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\bin\Debug\SVC_1.exe
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\bin\Debug\SVC_1.pdb
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.exe
+C:\Users\Paulo de Tarso\SVC\SVC_1.0\SVC_1.0\obj\Debug\SVC_1.pdb
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\bin\Debug\SVC_1.exe.config
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.exe
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.pdb
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\bin\Debug\SVC_1.exe
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\bin\Debug\SVC_1.pdb
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroCategoria.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroEntrada.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroFornecedor.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroProduto.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroSaida.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUsuario.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUtilizacao.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioIdentificacao.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioVerificarEstoque.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.Properties.Resources.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoAF.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoCP.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioEntrada.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioSaida.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.TelaInicial.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.csproj.GenerateResource.Cache
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\RdlCompile.cache
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\RdlCompile.compiled
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioProdutos.resources
+D:\SVC_1.0.4\SVC_1.0\bin\Debug\SVC_1.exe.config
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.exe
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.pdb
+D:\SVC_1.0.4\SVC_1.0\bin\Debug\SVC_1.exe
+D:\SVC_1.0.4\SVC_1.0\bin\Debug\SVC_1.pdb
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\ResolveAssemblyReference.cache
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroCategoria.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroEntrada.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroFornecedor.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroProduto.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroSaida.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUsuario.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUtilizacao.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioIdentificacao.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioVerificarEstoque.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.Properties.Resources.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoAF.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoCP.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioEntrada.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioProdutos.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioSaida.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.TelaInicial.resources
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\SVC_1.csproj.GenerateResource.Cache
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\RdlCompile.cache
+D:\SVC_1.0.4\SVC_1.0\obj\Debug\RdlCompile.compiled
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\bin\Debug\SVC_1.exe.config
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.exe
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.pdb
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroCategoria.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroEntrada.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroFornecedor.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroProduto.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroSaida.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUsuario.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUtilizacao.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioIdentificacao.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioVerificarEstoque.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.Properties.Resources.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoAF.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoCP.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioEntrada.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioProdutos.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioSaida.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.TelaInicial.resources
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.csproj.GenerateResource.Cache
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\RdlCompile.cache
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\RdlCompile.compiled
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\bin\Debug\SVC_1.exe
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\bin\Debug\SVC_1.pdb
+C:\Users\Paulo de Tarso\SVC\SVC_1.0.5\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroObra.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\bin\Debug\SVC_1.exe.config
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.exe
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.pdb
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\bin\Debug\SVC_1.exe
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\bin\Debug\SVC_1.pdb
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\ResolveAssemblyReference.cache
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroObra.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroCategoria.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroEntrada.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroFornecedor.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroProduto.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroSaida.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUsuario.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUtilizacao.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioIdentificacao.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioVerificarEstoque.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.Properties.Resources.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoAF.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoCP.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioEntrada.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioProdutos.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioSaida.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.TelaInicial.resources
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\SVC_1.csproj.GenerateResource.Cache
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\RdlCompile.cache
+D:\Projetos\SVC\SVC_1.0.6\SVC_1.0\obj\Debug\RdlCompile.compiled
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\bin\Debug\SVC_1.exe.config
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.exe
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.pdb
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\bin\Debug\SVC_1.exe
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\bin\Debug\SVC_1.pdb
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\ResolveAssemblyReference.cache
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroObra.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroCategoria.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroEntrada.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroFornecedor.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroProduto.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroSaida.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUsuario.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUtilizacao.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioIdentificacao.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioVerificarEstoque.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.Properties.Resources.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoAF.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoCP.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioEntrada.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioProdutos.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioSaida.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.TelaInicial.resources
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\SVC_1.csproj.GenerateResource.Cache
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\RdlCompile.cache
+D:\Projetos\SVC\SVC_1.0.7\SVC_1.0\obj\Debug\RdlCompile.compiled
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\ResolveAssemblyReference.cache
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroObra.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroCategoria.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroEntrada.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroFornecedor.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroProduto.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroSaida.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUsuario.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUtilizacao.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioIdentificacao.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioVerificarEstoque.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.Properties.Resources.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoAF.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoCP.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioEntrada.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioProdutos.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioSaida.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.TelaInicial.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.csproj.GenerateResource.Cache
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\RdlCompile.cache
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\RdlCompile.compiled
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\bin\Debug\SVC_1.exe.config
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\bin\Debug\SVC_1.exe
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\bin\Debug\SVC_1.pdb
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioFornecedores.resources
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.exe
+D:\Projetos\SVC\SVC_1.0.7 - JV\SVC_1.0\obj\Debug\SVC_1.pdb
+D:\Projetos\SVC\SVC_1.0\bin\Debug\SVC_1.exe.config
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.exe
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.pdb
+D:\Projetos\SVC\SVC_1.0\obj\Debug\ResolveAssemblyReference.cache
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroObra.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroCategoria.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroEntrada.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroFornecedor.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroProduto.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroSaida.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUsuario.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUtilizacao.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioIdentificacao.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioVerificarEstoque.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.Properties.Resources.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoAF.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoCP.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioEntrada.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioFornecedores.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioProdutos.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioSaida.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.TelaInicial.resources
+D:\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.csproj.GenerateResource.Cache
+D:\Projetos\SVC\SVC_1.0\obj\Debug\RdlCompile.cache
+D:\Projetos\SVC\SVC_1.0\obj\Debug\RdlCompile.compiled
+D:\Projetos\SVC\SVC_1.0\bin\Debug\SVC_1.exe
+D:\Projetos\SVC\SVC_1.0\bin\Debug\SVC_1.pdb
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.PesquisaCategoria.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.PesquisaObra.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroObra.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroCategoria.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroEntrada.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroFornecedor.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroProduto.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroSaida.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUsuario.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroUtilizacao.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioIdentificacao.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioVerificarEstoque.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.PesquisaProduto.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.Properties.Resources.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoAF.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoCP.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioEntrada.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioFornecedores.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioProdutos.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioSaida.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.TelaInicial.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.csproj.GenerateResource.Cache
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\RdlCompile.cache
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\RdlCompile.compiled
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\bin\Debug\SVC_1.exe.config
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\bin\Debug\SVC_1.exe
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\bin\Debug\SVC_1.pdb
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.exe
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.pdb
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.PesquisaUsuario.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.PesquisaFornecedor.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.PesquisaCotacaoPreco.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.PesquisaEntrada.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.PesquisaSaida.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.FormularioCadastroAvisoLancamento.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.PesquisaAvisoLancamento.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioSaida2.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioDocumentoAL.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.relatorios.RelatorioUsuario.resources
+C:\Users\joao.victor.s.borges.000\Documents\Projetos\SVC\SVC_1.0\obj\Debug\SVC_1.formularios.PesquisaUtilizacao.resources

@@ -1,0 +1,367 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using Vital.entidades;
+using System.Windows.Forms;
+
+namespace Vital.repositorio
+{
+    class ClienteDAO : DAO
+    {
+
+        public int cadastrar(Cliente cliente)
+        {
+
+            int idCliente = 0;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+
+                String strCmd = " INSERT INTO cliente(nome, endereco, bairro, cidade, telefone, numero, complemento) " +
+                                " VALUES (@nome, @endereco, @bairro, @cidade, @telefone, @numero, @complemento);";
+
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@nome", cliente.Nome);
+                cmd.Parameters.AddWithValue("@endereco", cliente.Endereco);
+                cmd.Parameters.AddWithValue("@bairro", cliente.Bairro);
+                cmd.Parameters.AddWithValue("@cidade", cliente.Cidade);
+                cmd.Parameters.AddWithValue("@telefone", cliente.Telefone);
+                cmd.Parameters.AddWithValue("@numero", cliente.Numero);
+                cmd.Parameters.AddWithValue("@complemento", cliente.Complemento);
+                
+                OpenConnection();
+                idCliente = Insere(cmd, strCmd);
+                CloseConnection();
+                return idCliente;
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+       public void atualizarQuantidade(Cliente produto)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " UPDATE produto SET quantidade=@quantidade WHERE id_produto=@id_produto;";
+                cmd.Parameters.Clear();
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public Cliente consultarProdutoPorCodigo(string codigo, int idObra)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM produto" +
+                                " WHERE codigo=@codigo"+
+                                " AND idObra=@idObra;";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@codigo", codigo);
+                cmd.Parameters.AddWithValue("@idObra", idObra);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Cliente> listaProdutos = new List<Cliente>();
+                listaProdutos = Popula(dataReader);
+                if (listaProdutos != null && listaProdutos.Count > 0)
+                {
+                    return listaProdutos.First<Cliente>();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public Cliente consultarProdutoPorNome(string nome, int idObra)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM produto" +
+                                " WHERE nome=@nome" +
+                                " AND idObra=@idObra;";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@nome", nome);
+                cmd.Parameters.AddWithValue("@idObra", idObra);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Cliente> listaProdutos = new List<Cliente>();
+                listaProdutos = Popula(dataReader);
+                if (listaProdutos != null && listaProdutos.Count > 0)
+                {
+                    return listaProdutos.First<Cliente>();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void atualizar(Cliente cliente)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " UPDATE cliente SET nome=@nome, endereco=@endereco, bairro=@bairro, " +
+                                " cidade=@cidade, telefone=@telefone, numero=@numero, complemento=@complemento " + 
+                                " WHERE id_cliente=@id_cliente;";
+                
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@nome", cliente.Nome);
+                cmd.Parameters.AddWithValue("@endereco", cliente.Endereco);
+                cmd.Parameters.AddWithValue("@bairro", cliente.Bairro);
+                cmd.Parameters.AddWithValue("@cidade", cliente.Cidade);
+                cmd.Parameters.AddWithValue("@telefone", cliente.Telefone);
+                cmd.Parameters.AddWithValue("@numero", cliente.Numero);
+                cmd.Parameters.AddWithValue("@complemento", cliente.Complemento);
+                cmd.Parameters.AddWithValue("@id_cliente", cliente.IdCliente);
+                
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void remover(int idCliente)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_cliente", idCliente);
+                string strCmd = " DELETE FROM cliente " +
+                                " WHERE id_cliente=@id_cliente; ";
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Não foi possível remover o Cliente." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public Cliente consultarClientePorId(int idCliente)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM cliente ";
+                strCmd = strCmd + " WHERE id_cliente=@id_cliente ";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_cliente", idCliente);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Cliente> listaClientes = new List<Cliente>();
+                listaClientes = Popula(dataReader);
+                if (listaClientes != null && listaClientes.Count > 0)
+                {
+                    return listaClientes.First<Cliente>();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        private List<Cliente> PopulaCliente(MySqlDataReader dataReader)
+        {
+            List<Cliente> clientes = new List<Cliente>();
+
+            while (dataReader.Read())
+            {
+                try
+                {
+                    Cliente cliente = new Cliente();
+                    cliente.Nome = dataReader["nome"].ToString();
+                    cliente.Endereco = dataReader["endereco"].ToString();
+                    cliente.Bairro = dataReader["bairro"].ToString();
+                    cliente.Cidade = dataReader["cidade"].ToString();
+                    cliente.Telefone = dataReader["telefone"].ToString();
+                    cliente.Numero = Convert.ToInt32(dataReader["numero"]);
+                    cliente.Complemento = dataReader["complemento"].ToString();
+                    cliente.IdCliente = Convert.ToInt32(dataReader["id_cliente"]);
+
+                    clientes.Add(cliente);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+            return clientes;
+        }
+
+        private List<Cliente> Popula(MySqlDataReader dataReader)
+        {
+            List<Cliente> clientes = new List<Cliente>();
+
+            while (dataReader.Read())
+            {
+                try
+                {
+
+                    Cliente cliente = new Cliente();
+                    cliente.Nome = dataReader["nome"].ToString();
+                    cliente.Endereco = dataReader["endereco"].ToString();
+                    cliente.Bairro = dataReader["bairro"].ToString();
+                    cliente.Cidade = dataReader["cidade"].ToString();
+                    cliente.Telefone = dataReader["telefone"].ToString();
+                    cliente.Numero = Convert.ToInt32(dataReader["numero"]);
+                    cliente.Complemento = dataReader["complemento"].ToString();
+                    cliente.IdCliente = Convert.ToInt32(dataReader["id_cliente"]);
+                    
+                    clientes.Add(cliente);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+            return clientes;
+        }
+
+
+        public List<Cliente> consultarProdutoAdministrador(string valorPesquisa, string parametro)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = " SELECT p.*, o.codigo codigoObra FROM produto p, obra o where p.idObra = o.id_obra";
+                if ("Nome do Produto".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND p.nome like '%" + valorPesquisa + "%'";
+                }
+                else if ("Categoria".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND p.id_categoria=@categoria ";
+                    cmd.Parameters.AddWithValue("@categoria", valorPesquisa);
+                }
+                else if ("Quantidade".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND p.quantidade=@quantidade";
+                    cmd.Parameters.AddWithValue("@quantidade", valorPesquisa);
+                }
+                else if ("Quantidade Mínima".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND p.quantidade_minima=@quantidade_minima";
+                    cmd.Parameters.AddWithValue("@quantidade_minima", valorPesquisa);
+                }
+                else if ("Código".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND p.codigo=@codigo";
+                    cmd.Parameters.AddWithValue("@codigo", valorPesquisa);
+                }
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Cliente> listaProdutos = new List<Cliente>();
+                listaProdutos = PopulaCliente(dataReader);
+                if (listaProdutos != null && listaProdutos.Count > 0)
+                {
+                    return listaProdutos;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+
+        public List<Cliente> consultarCliente(string valorPesquisa)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = " SELECT c.* FROM cliente c WHERE c.nome like '%" + valorPesquisa + "%' order by nome";
+                                
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Cliente> listaClientes = new List<Cliente>();
+                listaClientes = PopulaCliente(dataReader);
+                if (listaClientes != null && listaClientes.Count > 0)
+                {
+                    return listaClientes;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o cliente pelo nome fornecido." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+    }
+}

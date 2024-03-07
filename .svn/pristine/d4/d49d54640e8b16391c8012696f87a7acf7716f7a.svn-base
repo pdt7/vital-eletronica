@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class PessoaFisica
+    {
+        private int idPessoaFisica;
+        private string nome;
+        private DateTime dataNascimento;
+        private string cpf;
+        private int rg;
+        private string ufRG;
+        private string orgao;
+        
+        public int IdPessoaFisica
+        {
+            get { return idPessoaFisica; }
+            set { idPessoaFisica = value; }
+        }
+
+        public string Nome
+        {
+            get { return nome; }
+            set { nome = value; }
+        }
+
+        public DateTime DataNascimento
+        {
+            get { return dataNascimento; }
+            set { dataNascimento = value; }
+        }
+
+        public string Cpf
+        {
+            get { return cpf; }
+            set { cpf = value; }
+        }
+
+        public int Rg
+        {
+            get { return rg; }
+            set { rg = value; }
+        }
+
+        public string UfRG
+        {
+            get { return ufRG; }
+            set { ufRG = value; }
+        }
+
+        public string Orgao
+        {
+            get { return orgao; }
+            set { orgao = value; }
+        }
+
+    }
+}

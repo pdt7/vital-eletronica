@@ -1,0 +1,41 @@
+﻿CREATE TABLE  `vital`.`usuario` (
+  `id_usuario` int(10) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(200) NOT NULL,
+  `login` varchar(12) NOT NULL,
+  `senha` varchar(12) NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `login` (`login`)
+);
+
+insert into usuario values (1, 'Administrador', 'adm','adm');
+
+CREATE TABLE  `vital`.`cliente` (
+  `id_cliente` int(10) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(200) NOT NULL,
+  `endereco` varchar(200) NOT NULL,
+  `bairro` varchar(200) NOT NULL,
+  `cidade` varchar(200) NOT NULL,
+  `telefone` varchar(200) NOT NULL,
+  `numero` int(10),
+  `complemento` varchar(200),
+  PRIMARY KEY (`id_cliente`),
+  UNIQUE KEY `nome` (`nome`)
+);
+
+CREATE TABLE  `vital`.`ordem_servico` (
+  `id_ordem_servico` int(10) NOT NULL AUTO_INCREMENT,
+  `id_cliente` int(10) NOT NULL,
+  `aparelho` varchar(30) NOT NULL,
+  `marca` varchar(200) NOT NULL,
+  `modelo` varchar(200) NOT NULL,
+  `sintoma` varchar(200) NOT NULL,
+  `observacoes` varchar(200),
+  `info_adicional` varchar(200),
+  `data_entrada` date,
+  `data_saida` date,
+  `valor` float,
+  CONSTRAINT `FK_ordem_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON UPDATE CASCADE,
+  PRIMARY KEY (`id_ordem_servico`)
+);
+
+drop table cliente;

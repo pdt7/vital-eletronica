@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class Categoria
+    {
+        int idCategoria;
+        string nome;
+
+        public int IdCategoria
+        {
+            get { return idCategoria; }
+            set { idCategoria = value; }
+        }
+
+        public string Nome
+        {
+            get { return nome; }
+            set { nome = value; }
+        }
+
+    }
+}

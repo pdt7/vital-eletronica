@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class ItemEntrada
+    {
+        int id_item_entrada;
+        Cliente produto;
+        float quantidade;
+        Utilizacao utilizacao;
+        float preco;
+        Obra obra;
+        Entrada entrada;
+
+        public int Id_Item_Entrada
+        {
+            get { return id_item_entrada; }
+            set { id_item_entrada = value; }
+        }
+
+        public Cliente Produto
+        {
+            get { return produto; }
+            set { produto = value; }
+        }
+
+        public float Quantidade
+        {
+            get { return quantidade; }
+            set { quantidade = value; }
+        }
+
+        public Utilizacao Utilizacao
+        {
+            get { return utilizacao; }
+            set { utilizacao = value; }
+        }
+
+        public float Preco
+        {
+            get { return preco; }
+            set { preco = value; }
+        }
+
+        public Obra Obra
+        {
+            get { return obra; }
+            set { obra = value; }
+        }
+
+        public Entrada Entrada
+        {
+            get { return entrada; }
+            set { entrada = value; }
+        }
+
+    }
+}

@@ -1,0 +1,109 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using SVC_1.util;
+using SVC_1.controladores;
+using SVC_1.entidades;
+
+namespace SVC_1.formularios
+{
+    public partial class FormularioCadastroOrdemServico : Form
+    {
+        ControladorOrdemServico controladorOrdemServico;
+
+        public int idProduto;
+        public int idCategoria;
+        public int idUnidadeMedida;
+        public Cliente produto = null;
+
+        public FormularioCadastroOrdemServico()
+        {
+            InitializeComponent();
+            controladorOrdemServico = new ControladorOrdemServico();
+            idProduto = 0;
+            idCategoria = 0;
+            idUnidadeMedida = 0;
+        }
+
+        private void FormularioCadastroProduto_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'vitalDataSet1.cliente' table. You can move, or remove it, as needed.
+            this.clienteTableAdapter.Fill(this.vitalDataSet1.cliente);
+            
+        }
+
+        private void botaoLimpar_Click(object sender, EventArgs e)
+        {
+            ManipulaCampos.LimparCampos(this.groupBoxProduto);
+        }
+
+        private void botaoCadastrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string aparelho = textAparelho.Text;
+                string sintoma = textSintoma.Text;
+                string marca = textMarca.Text;
+                string modelo = textModelo.Text;
+                int idCliente = Convert.ToInt32(comboBoxCliente.SelectedValue);
+                DateTime dataEntrada = Convert.ToDateTime(inputDataEntrada.Text);
+                DateTime dataSaida = Convert.ToDateTime(inputDataSaida.Text);
+                string obs = richTextBoxObs.Text;
+                double valor = 0;
+                if (!maskedValor.Text.Equals("    ,"))
+                {
+                    try
+                    {
+                        valor = Convert.ToDouble(maskedValor.Text.Replace(",", "."));
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Valor preenchido de forma incorreta. Preencha com máscara XXXX,XX.");
+                    }
+                }
+                                
+                if (aparelho == "")
+                {
+                    throw new Exception("O campo aparelho precisa ser informado!");
+                }
+
+                MessageBox.Show(controladorOrdemServico.cadastrar(aparelho, marca, modelo, sintoma, obs, 
+                    dataEntrada, dataSaida, valor, idCliente));
+                ManipulaCampos.LimparCampos(groupBoxProduto);
+                
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void botaoCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        public void atualizarDados(Cliente produto)
+        {
+            textAparelho.Text = produto.Nome;
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+    }
+}

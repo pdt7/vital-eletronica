@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class ItemCotacaoPreco
+    {
+        int idItemCotacaoPreco;
+        CotacaoPreco cotacao;
+        Cliente produto;
+        Utilizacao utilizacao;
+        float quantidade;
+        string observacao;
+
+        public int IdItemCotacaoPreco
+        {
+            get { return idItemCotacaoPreco; }
+            set { idItemCotacaoPreco = value; }
+        }
+
+        public CotacaoPreco Cotacao
+        {
+            get { return cotacao; }
+            set { cotacao = value; }
+        }
+
+        public Cliente Produto
+        {
+            get { return produto; }
+            set { produto = value; }
+        }
+
+        public Utilizacao Utilizacao
+        {
+            get { return utilizacao; }
+            set { utilizacao = value; }
+        }
+
+        public string Observacao
+        {
+            get { return observacao; }
+            set { observacao = value; }
+        }
+
+        public float Quantidade
+        {
+            get { return quantidade; }
+            set { quantidade = value; }
+        }
+    }
+}

@@ -1,0 +1,189 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using SVC_1.entidades;
+using MySql.Data.MySqlClient;
+
+namespace SVC_1.repositorio
+{
+    class CotacaoPrecoDAO : DAO
+    {
+        public int Cadastrar(CotacaoPreco cotacao)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                string strCmd = " INSERT INTO cotacaodeprecos (dataCricao) VALUES " +
+                                " ( @dataCriacao); ";
+
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@dataCriacao", cotacao.DataCriacao);
+
+                OpenConnection();
+                return Insere(cmd, strCmd);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível cadastrar a Cotacao Preco(CP) " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void remover(int idCotacao)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " UPDATE cotacaodeprecos SET excluido = 'S' WHERE id_cotacao=@id_cotacao;";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_cotacao", idCotacao);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public CotacaoPreco consultarCotacaoPrecoPorId(int idCotacaoPreco)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM cotacaodeprecos" +
+                                " WHERE id_cotacao=@id_cotacao";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_cotacao", idCotacaoPreco);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<CotacaoPreco> listaCotacaoPreco = new List<CotacaoPreco>();
+                listaCotacaoPreco = Popula(dataReader);
+                if (listaCotacaoPreco != null && listaCotacaoPreco.Count > 0)
+                {
+                    return listaCotacaoPreco.First<CotacaoPreco>();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        private List<CotacaoPreco> Popula(MySqlDataReader dataReader)
+        {
+            List<CotacaoPreco> listaCP = new List<CotacaoPreco>();
+            while (dataReader.Read())
+            {
+                CotacaoPreco cotacao = new CotacaoPreco();
+                cotacao.IdCotacaoPreco = Convert.ToInt32(dataReader["id_cotacao"]);
+                cotacao.DataCriacao = Convert.ToDateTime(dataReader["dataCricao"]);
+                listaCP.Add(cotacao);
+            }
+            return listaCP;
+        }
+
+
+        public List<CotacaoPreco> consultarCotacaoPrecoAdministrador(object valorPesquisa, string parametro)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = " SELECT * FROM cotacaodeprecos c ";
+                if ("Número CP".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE c.id_cotacao=@id_cotacao AND c.excluido = 'N' ";
+                    cmd.Parameters.AddWithValue("@id_cotacao", valorPesquisa);
+                }
+                else if ("Data Cadastro".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE c.dataCriacao = @dataCricao AND c.excluido = 'N' ";
+                    cmd.Parameters.AddWithValue("@dataCricao", valorPesquisa);
+                }
+
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<CotacaoPreco> listaCP = Popula(dataReader);
+                if (listaCP != null && listaCP.Count > 0)
+                {
+                    return listaCP;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+        }
+
+        public List<CotacaoPreco> consultarCotacaoPreco(object valorPesquisa, string parametro, int idObra)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = " SELECT c.* FROM cotacaodeprecos c, itemcotacaoprecos i, produto p WHERE c.id_cotacao = i.numeroCotacao AND i.idProduto = p.id_produto AND p.idObra=@idObra ";
+                cmd.Parameters.AddWithValue("@idObra", idObra);
+                if ("Número CP".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND c.id_cotacao=@id_cotacao AND c.excluido = 'N' ";
+                    cmd.Parameters.AddWithValue("@id_cotacao", valorPesquisa);
+                }
+                else if ("Data Cadastro".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND c.dataCriacao = @dataCricao AND c.excluido = 'N' ";
+                    cmd.Parameters.AddWithValue("@dataCricao", valorPesquisa);
+                }
+                strCmd = strCmd + " group by c.id_cotacao ";
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<CotacaoPreco> listaCP = Popula(dataReader);
+                if (listaCP != null && listaCP.Count > 0)
+                {
+                    return listaCP;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+        }
+    }
+}

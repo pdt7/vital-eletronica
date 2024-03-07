@@ -1,0 +1,134 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using SVC_1.entidades;
+using SVC_1.controladores;
+using SVC_1.formularios;
+using System.Web.UI.WebControls;
+
+
+namespace SVC_1.formularios
+{
+    public partial class PesquisaCliente : Form
+    {
+        ControladorCliente controladorCliente;
+
+        public PesquisaCliente()
+        {
+            InitializeComponent();
+            controladorCliente = new ControladorCliente();
+            Usuario usuario = ((TelaInicial)Application.OpenForms[0]).usuarioLogado;
+            editar.Visible = usuario.PermiteAlterarDados;
+        }
+
+        private void PesquisaProduto_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'vitalDataSet1.cliente' table. You can move, or remove it, as needed.
+            this.clienteTableAdapter.Fill(this.vitalDataSet1.cliente);
+            // TODO: This line of code loads data into the 'svcDataSet.obra' table. You can move, or remove it, as needed.
+        }
+
+        private void pesquisar_Click(object sender, EventArgs e)
+        {
+
+            //A ordem dos numeros dos arrays depende da ordem das colunas na tabela
+            try{
+                dataGridProduto.Rows.Clear();
+
+                string valor = textValor.Text;
+                Usuario usuario = ((TelaInicial)Application.OpenForms[0]).usuarioLogado;
+                List<Cliente> listaClientes = controladorCliente.consultarCliente(valor);
+                foreach (Cliente cliente in listaClientes)
+                {
+                    PopulateForm(cliente);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A pesquisa não retornou nenhum dado.");
+            }
+        }
+
+        private void PopulateForm(Cliente cliente)
+        {
+
+            int n = dataGridProduto.Rows.Add();
+
+            dataGridProduto.Rows[n].Cells[0].Value = cliente.Nome;
+        }
+
+        private void editar_Click(object sender, EventArgs e)
+        {
+            int n = dataGridProduto.SelectedRows.Count;
+            if (n == 1)
+            {
+                int indice = dataGridProduto.CurrentRow.Index;
+                int idProduto = Convert.ToInt32(dataGridProduto.Rows[indice].Cells[4].Value);
+                FormularioCadastroCliente cadastroProduto = new FormularioCadastroCliente();
+                Cliente produto = null;// controladorProduto.consultarProdutoPorId(idProduto);
+                cadastroProduto.produto = produto;
+                cadastroProduto.ShowDialog();
+            }
+            else if (n == 0)
+            {
+                MessageBox.Show("É necessário selecionar um item.");
+            }
+            else
+            {
+                MessageBox.Show("Favor selecionar somente um item.");
+            }
+            dataGridProduto.Rows.Clear();
+        }
+
+        private void fechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void remover_Click(object sender, EventArgs e)
+        {
+            int n = dataGridProduto.SelectedRows.Count;
+            if (n == 1)
+            {
+                int idProduto = Convert.ToInt32(dataGridProduto.Rows[0].Cells[4].Value);
+                MessageBox.Show(null);//controladorProduto.remover(idProduto));
+            }
+            else if (n == 0)
+            {
+                MessageBox.Show("É necessário selecionar um item.");
+            }
+            else
+            {
+                MessageBox.Show("Favor selecionar somente um item.");
+            }
+            dataGridProduto.Rows.Clear();
+
+        }
+
+        private void comboBoxObra_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Usuario usuario = ((TelaInicial)Application.OpenForms[0]).usuarioLogado;
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.clienteTableAdapter.FillBy(this.vitalDataSet1.cliente);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+
+
+      }
+}

@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class UnidadeMedida
+    {
+        private string sigla;
+        private string descricao;
+        private int idUnidade;
+
+        public string Sigla
+        {
+            get { return sigla; }
+            set { sigla = value; }
+        }
+
+        public string Descricao
+        {
+            get { return descricao; }
+            set { descricao = value; }
+        }
+
+        public int IdUnidade
+        {
+            get { return idUnidade; }
+            set { idUnidade = value; }
+        }
+
+    }
+}

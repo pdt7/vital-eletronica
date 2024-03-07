@@ -1,0 +1,1 @@
+ mysql -h localhost -ueder -pminhasenha < arquivobackup.sql

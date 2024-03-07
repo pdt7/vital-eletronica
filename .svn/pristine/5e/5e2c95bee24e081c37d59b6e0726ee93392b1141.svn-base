@@ -1,0 +1,13 @@
+drop table itemEntrada;
+drop table entrada;
+drop table itemcotacaoPrecos;
+drop table cotacaodeprecos;
+drop table item_saida;
+drop table saida;
+drop table obra;
+drop table fornecedor;
+drop table utilizacao;
+drop table produto;
+drop table unidade_medida;
+drop table categoria;
+drop table usuario;

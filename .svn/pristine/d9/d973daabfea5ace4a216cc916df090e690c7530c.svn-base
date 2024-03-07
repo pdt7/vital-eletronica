@@ -1,0 +1,175 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using SVC_1.entidades;
+
+namespace SVC_1.repositorio
+{
+    class CategoriaDAO : DAO
+    {
+        public int cadastrar(Categoria categoria)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                string strCmd = " INSERT INTO categoria (nome) VALUES " +
+                                " (@nome);";
+                cmd.Parameters.Clear();
+
+                cmd.Parameters.AddWithValue("@nome", categoria.Nome);
+
+                OpenConnection();
+                return Insere(cmd, strCmd);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível cadastrar a Categoria " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void atualizar(Categoria categoria)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " UPDATE categoria SET nome=@nome " +
+                                " WHERE id_categoria=@id_categoria;";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_categoria", categoria.IdCategoria);
+                cmd.Parameters.AddWithValue("@nome", categoria.Nome);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void remover(int idCategoria)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
+                string strCmd = " DELETE FROM categoria " +
+                                " WHERE id_categoria = @id_categoria; ";
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+            }
+            catch
+            {
+                throw new Exception("Não foi possível remover o Categoria.");
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public Categoria consultarCategoriaPorId(int idCategoria)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM categoria" +
+                                " WHERE id_categoria=@id_categoria";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Categoria> listaCategorias = new List<Categoria>();
+                listaCategorias = Popula(dataReader);
+                if (listaCategorias != null && listaCategorias.Count > 0)
+                {
+                    return listaCategorias.First<Categoria>();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o categoria pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        private List<Categoria> Popula(MySqlDataReader dataReader)
+        {
+            List<Categoria> categorias = new List<Categoria>();
+
+            while (dataReader.Read())
+            {
+                try
+                {
+                    Categoria categoria = new Categoria();
+                    categoria.IdCategoria = Convert.ToInt32(dataReader["id_categoria"]);
+                    categoria.Nome = dataReader["nome"].ToString();
+                    categorias.Add(categoria);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+            return categorias;
+        }
+
+
+        public List<Categoria> consultarCategoria(string valorPesquisa, string parametro)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = " SELECT * FROM categoria p";
+                if ("Nome".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE upper(p.nome) like '%" + valorPesquisa.ToUpper() + "%'";
+                    //cmd.Parameters.AddWithValue("@nome", valorPesquisa.ToUpper());
+                }
+
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Categoria> listaCategorias = new List<Categoria>();
+                listaCategorias = Popula(dataReader);
+                if (listaCategorias != null && listaCategorias.Count > 0)
+                {
+                    return listaCategorias;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o categoria pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+    }
+}

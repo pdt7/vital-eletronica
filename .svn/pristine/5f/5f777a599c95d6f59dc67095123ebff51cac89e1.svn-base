@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class Saida
+    {
+        int idSaida;
+        String responsavel;
+        DateTime data;
+        List<ItemSaida> itensSaida;
+        Obra obra;
+        
+        public Obra Obra
+        {
+            get { return obra; }
+            set { obra = value; }
+        }
+
+        public int IdSaida
+        {
+            get { return idSaida; }
+            set { idSaida = value; }
+        }
+
+        public String Responsavel
+        {
+            get { return responsavel; }
+            set { responsavel = value; }
+        }
+
+        public DateTime Data
+        {
+            get { return data; }
+            set { data = value; }
+        }
+
+        public List<ItemSaida> ItensSaida
+        {
+            get { return itensSaida; }
+            set { itensSaida = value; }
+        }
+    }
+}

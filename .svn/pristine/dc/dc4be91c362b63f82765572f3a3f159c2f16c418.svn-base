@@ -1,0 +1,125 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using System.Data;
+using Vital.Properties;
+
+namespace Vital.repositorio
+{
+    class DAO
+    {
+        private MySqlConnection myConection;
+        private MySqlDataReader myDataReader;
+        private Settings config;
+
+        public DAO()
+        {
+            //Define string de conexão
+            config = new Vital.Properties.Settings();
+            myConection = new MySqlConnection("server=localhost;User Id=root;password=infit;Persist Security Info=True;database=vital");
+        }
+
+        /**
+         * Abre uma conexao
+         * */
+        protected void OpenConnection()
+        {
+            try
+            {
+                if (myConection.State == ConnectionState.Closed)
+                    myConection.Open();
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Impossível estabelecer conexão com o Banco de Dados: " + ex.Message);
+            }
+        }
+
+        /**
+         * Metodo para Insercao
+         * */
+        protected int Insere(MySqlCommand cmd, string strComando)
+        {
+            int id = 0;
+            //Verifica se a conexão está aberta
+            if (myConection.State == ConnectionState.Open)
+            {
+                try
+                {
+                    //Se estiver executa a string
+                    cmd.CommandText = strComando;
+                    cmd.Connection = myConection;
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = "SELECT LAST_INSERT_ID()";
+                    id = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+                catch (MySqlException ex)
+                {
+                    cmd.Transaction.Rollback();
+                    throw new Exception(ex.Message);
+                }
+
+            }
+            return id;
+        }
+
+        /**
+         * Metodo para Update/Delete
+         * */
+        protected void ExecutaComando(MySqlCommand cmd, string strCommand)
+        {
+            //Verifica se a conexão está aberta
+            if (myConection.State == ConnectionState.Open)
+            {
+                try
+                {
+                    //Se estiver executa a string
+                    cmd.Connection = myConection;
+                    cmd.CommandText = strCommand;
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    cmd.Transaction.Rollback();
+                    throw new Exception("Impossível completar a operação de Atualização/Remoção. " + ex.Message);
+                }
+            }
+        }
+
+        /**
+         * Metodo para pesquisa
+         * */
+        protected MySqlDataReader Pesquisa(MySqlCommand cmd, string query)
+        {
+            //Verifica se a conexão está aberta
+            if (myConection.State == ConnectionState.Open)
+            {
+                try
+                {
+                    cmd.CommandText = query;
+                    cmd.Connection = myConection;
+                    //Definição do DataReader
+                    myDataReader = cmd.ExecuteReader();
+                }
+                catch (MySqlException ex)
+                {
+                    cmd.Transaction.Rollback();
+                    throw new Exception("Não foi possível localizar os dados solicitados " + ex.Message);
+                }
+            }
+            return myDataReader;
+        }
+
+        /**
+         * Encerra a conexao
+         * */
+        protected void CloseConnection()
+        {
+            if (myConection.State == ConnectionState.Open)
+                myConection.Close();
+        }
+    }
+}

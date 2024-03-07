@@ -1,0 +1,211 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using System.Data;
+using SVC_1.entidades;
+
+namespace SVC_1.repositorio
+{
+    class ObraDAO : DAO
+    {
+        public int Cadastrar(Obra obra)
+        {
+            int idLancamento = 0;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                string strCmd = " INSERT INTO obra (codigo, cep, local, rua, numero, bairro, cidade, estado, cnpj, inscricaoEstadual) VALUES " +
+                                " (@codigo, @cep, @local, @rua, @numero, @bairro, @cidade, @estado, @cnpj, @inscricaoEstadual);";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@local", obra.Local);
+                cmd.Parameters.AddWithValue("@codigo", obra.Codigo);
+                cmd.Parameters.AddWithValue("@cep", obra.Cep);
+                cmd.Parameters.AddWithValue("@rua", obra.Rua);
+                cmd.Parameters.AddWithValue("@numero", obra.Numero);
+                cmd.Parameters.AddWithValue("@bairro", obra.Bairro);
+                cmd.Parameters.AddWithValue("@cidade", obra.Cidade);
+                cmd.Parameters.AddWithValue("@estado", obra.Estado);
+                cmd.Parameters.AddWithValue("@cnpj", obra.CNPJ);
+                cmd.Parameters.AddWithValue("@inscricaoEstadual", obra.InscricaoEstadual);
+
+
+                OpenConnection();
+                idLancamento = Insere(cmd, strCmd);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível cadastrar a Obra " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return idLancamento;
+        }
+
+
+        public void atualizar(Obra obra)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " UPDATE obra SET codigo=@codigo, cep=@cep, local=@local, rua=@rua, numero=@numero, bairro=@bairro, " +
+                                " cidade=@cidade, estado=@estado, cnpj=@cnpj, inscricaoEstadual=@inscricaoEstadual WHERE id_obra=@id_obra; ";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_obra", obra.IdObra);
+                cmd.Parameters.AddWithValue("@local", obra.Local);
+                cmd.Parameters.AddWithValue("@codigo", obra.Codigo);
+                cmd.Parameters.AddWithValue("@cep", obra.Cep);
+                cmd.Parameters.AddWithValue("@rua", obra.Rua);
+                cmd.Parameters.AddWithValue("@numero", obra.Numero);
+                cmd.Parameters.AddWithValue("@bairro", obra.Bairro);
+                cmd.Parameters.AddWithValue("@cidade", obra.Cidade);
+                cmd.Parameters.AddWithValue("@estado", obra.Estado);
+                cmd.Parameters.AddWithValue("@cnpj", obra.CNPJ);
+                cmd.Parameters.AddWithValue("@inscricaoEstadual", obra.InscricaoEstadual);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void remover(int idObra)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_obra", idObra);
+                string strCmd = " DELETE FROM obra " +
+                                " WHERE id_obra = @id_obra; ";
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+            }
+            catch
+            {
+                throw new Exception("Não foi possível remover a Obra.");
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public Obra consultarObraPorId(int idObra)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM obra" +
+                                " WHERE id_obra=@id_obra";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_obra", idObra);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Obra> listaObras = new List<Obra>();
+                listaObras = Popula(dataReader);
+                if (listaObras != null && listaObras.Count > 0)
+                {
+                    return listaObras.First<Obra>();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        private List<Obra> Popula(MySqlDataReader dataReader)
+        {
+            List<Obra> obras = new List<Obra>();
+
+            while (dataReader.Read())
+            {
+                try
+                {
+
+                    Obra obra = new Obra();
+                    obra.IdObra = Convert.ToInt32(dataReader["id_obra"]);
+                    obra.Local = dataReader["local"].ToString();
+                    obra.Codigo = dataReader["codigo"].ToString();
+                    obra.Rua = dataReader["rua"].ToString();
+                    obra.Numero = dataReader["numero"].ToString();
+                    obra.Bairro =  dataReader["bairro"].ToString();
+                    obra.Cidade =  dataReader["cidade"].ToString();
+                    obra.Estado = dataReader["estado"].ToString();
+                    obra.Cep = dataReader["cep"].ToString();
+                    obra.CNPJ = dataReader["cnpj"].ToString();
+                    obra.InscricaoEstadual = dataReader["inscricaoEstadual"].ToString();
+                    obras.Add(obra);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+            return obras;
+        }
+
+
+        public List<Obra> consultarObra(string valorPesquisa, string parametro)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = " SELECT * FROM obra p";
+                if ("Local".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE p.local=@local";
+                    cmd.Parameters.AddWithValue("@local", valorPesquisa);
+                }
+                else if ("Código".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE p.codigo=@codigo";
+                    cmd.Parameters.AddWithValue("@codigo", valorPesquisa);
+                }
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Obra> listaObras = new List<Obra>();
+                listaObras = Popula(dataReader);
+                if (listaObras != null && listaObras.Count > 0)
+                {
+                    return listaObras;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+    }
+}

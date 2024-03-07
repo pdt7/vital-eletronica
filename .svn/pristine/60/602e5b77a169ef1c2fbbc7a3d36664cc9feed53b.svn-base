@@ -1,0 +1,273 @@
+﻿namespace SVC_1.formularios
+{
+    partial class PesquisaCliente
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.dataGridProduto = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.obraBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textValor = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.editar = new System.Windows.Forms.Button();
+            this.fechar = new System.Windows.Forms.Button();
+            this.remover = new System.Windows.Forms.Button();
+            this.pesquisar = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vitalDataSet1 = new SVC_1.vitalDataSet1();
+            this.clienteTableAdapter = new SVC_1.vitalDataSet1TableAdapters.clienteTableAdapter();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enderecoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bairro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridProduto)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.obraBindingSource)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vitalDataSet1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dataGridProduto
+            // 
+            this.dataGridProduto.AllowUserToAddRows = false;
+            this.dataGridProduto.AllowUserToDeleteRows = false;
+            this.dataGridProduto.AutoGenerateColumns = false;
+            this.dataGridProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridProduto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nome,
+            this.enderecoDataGridViewTextBoxColumn,
+            this.numero,
+            this.bairro,
+            this.cidade,
+            this.telefoneDataGridViewTextBoxColumn});
+            this.dataGridProduto.DataSource = this.clienteBindingSource;
+            this.dataGridProduto.Location = new System.Drawing.Point(6, 16);
+            this.dataGridProduto.Name = "dataGridProduto";
+            this.dataGridProduto.ReadOnly = true;
+            this.dataGridProduto.Size = new System.Drawing.Size(868, 235);
+            this.dataGridProduto.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textValor);
+            this.groupBox1.Controls.Add(this.pesquisar);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(667, 104);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pesquisa";
+            // 
+            // obraBindingSource
+            // 
+            this.obraBindingSource.DataMember = "obra";
+            // 
+            // textValor
+            // 
+            this.textValor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textValor.Location = new System.Drawing.Point(63, 36);
+            this.textValor.Name = "textValor";
+            this.textValor.Size = new System.Drawing.Size(587, 26);
+            this.textValor.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nome";
+            // 
+            // editar
+            // 
+            this.editar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editar.Location = new System.Drawing.Point(481, 399);
+            this.editar.Name = "editar";
+            this.editar.Size = new System.Drawing.Size(96, 26);
+            this.editar.TabIndex = 2;
+            this.editar.Text = "Editar";
+            this.editar.UseVisualStyleBackColor = true;
+            this.editar.Click += new System.EventHandler(this.editar_Click);
+            // 
+            // fechar
+            // 
+            this.fechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fechar.Location = new System.Drawing.Point(583, 399);
+            this.fechar.Name = "fechar";
+            this.fechar.Size = new System.Drawing.Size(96, 26);
+            this.fechar.TabIndex = 3;
+            this.fechar.Text = "Fechar";
+            this.fechar.UseVisualStyleBackColor = true;
+            this.fechar.Click += new System.EventHandler(this.fechar_Click);
+            // 
+            // remover
+            // 
+            this.remover.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.remover.Location = new System.Drawing.Point(379, 399);
+            this.remover.Name = "remover";
+            this.remover.Size = new System.Drawing.Size(96, 26);
+            this.remover.TabIndex = 4;
+            this.remover.Text = "Remover";
+            this.remover.UseVisualStyleBackColor = true;
+            this.remover.Visible = false;
+            this.remover.Click += new System.EventHandler(this.remover_Click);
+            // 
+            // pesquisar
+            // 
+            this.pesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pesquisar.Location = new System.Drawing.Point(553, 68);
+            this.pesquisar.Name = "pesquisar";
+            this.pesquisar.Size = new System.Drawing.Size(97, 26);
+            this.pesquisar.TabIndex = 5;
+            this.pesquisar.Text = "Pesquisar";
+            this.pesquisar.UseVisualStyleBackColor = true;
+            this.pesquisar.Click += new System.EventHandler(this.pesquisar_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridProduto);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(12, 122);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(880, 271);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            // 
+            // clienteBindingSource
+            // 
+            this.clienteBindingSource.DataMember = "cliente";
+            this.clienteBindingSource.DataSource = this.vitalDataSet1;
+            // 
+            // vitalDataSet1
+            // 
+            this.vitalDataSet1.DataSetName = "vitalDataSet1";
+            this.vitalDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clienteTableAdapter
+            // 
+            this.clienteTableAdapter.ClearBeforeFill = true;
+            // 
+            // nome
+            // 
+            this.nome.DataPropertyName = "N";
+            this.nome.HeaderText = "Nome";
+            this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
+            // 
+            // enderecoDataGridViewTextBoxColumn
+            // 
+            this.enderecoDataGridViewTextBoxColumn.DataPropertyName = "endereco";
+            this.enderecoDataGridViewTextBoxColumn.HeaderText = "Endereço";
+            this.enderecoDataGridViewTextBoxColumn.Name = "enderecoDataGridViewTextBoxColumn";
+            this.enderecoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // numero
+            // 
+            this.numero.DataPropertyName = "numero";
+            this.numero.HeaderText = "Número";
+            this.numero.Name = "numero";
+            this.numero.ReadOnly = true;
+            // 
+            // bairro
+            // 
+            this.bairro.DataPropertyName = "bairro";
+            this.bairro.HeaderText = "Bairro";
+            this.bairro.Name = "bairro";
+            this.bairro.ReadOnly = true;
+            // 
+            // cidade
+            // 
+            this.cidade.DataPropertyName = "cidade";
+            this.cidade.HeaderText = "Cidade";
+            this.cidade.Name = "cidade";
+            this.cidade.ReadOnly = true;
+            // 
+            // telefoneDataGridViewTextBoxColumn
+            // 
+            this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
+            this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
+            this.telefoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.telefoneDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // PesquisaCliente
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(904, 436);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.remover);
+            this.Controls.Add(this.fechar);
+            this.Controls.Add(this.editar);
+            this.Controls.Add(this.groupBox1);
+            this.Name = "PesquisaCliente";
+            this.Text = "Pesquisa de Produto";
+            this.Load += new System.EventHandler(this.PesquisaProduto_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridProduto)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.obraBindingSource)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vitalDataSet1)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.DataGridView dataGridProduto;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button editar;
+        private System.Windows.Forms.Button fechar;
+        private System.Windows.Forms.Button remover;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textValor;
+        private System.Windows.Forms.Button pesquisar;
+        private System.Windows.Forms.GroupBox groupBox2;
+
+        private System.Windows.Forms.BindingSource obraBindingSource;
+        private vitalDataSet1 vitalDataSet1;
+        private System.Windows.Forms.BindingSource clienteBindingSource;
+        private SVC_1.vitalDataSet1TableAdapters.clienteTableAdapter clienteTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn enderecoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bairro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+    }
+}

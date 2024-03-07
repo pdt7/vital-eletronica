@@ -1,0 +1,53 @@
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\bin\Debug\EletronicaVital.exe.config
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\bin\Debug\EletronicaVital.exe
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\bin\Debug\EletronicaVital.pdb
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\ResolveAssemblyReference.cache
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\EletronicaVital.csproj.GenerateResource.Cache
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\RdlCompile.cache
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\RdlCompile.compiled
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\EletronicaVital.exe
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\EletronicaVital.pdb
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.PesquisaOrdemServico.resources
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioBalancoCaixa.resources
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioCadastroOrdemServico.resources
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioCadastroCliente.resources
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioIdentificacao.resources
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.PesquisaCliente.resources
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.Properties.Resources.resources
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.relatorios.DocumentoOrdemServico.resources
+C:\PDT\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.TelaInicial.resources
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\bin\Debug\EletronicaVital.exe.config
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\EletronicaVital.exe
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\EletronicaVital.pdb
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\bin\Debug\EletronicaVital.exe
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\bin\Debug\EletronicaVital.pdb
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\ResolveAssemblyReference.cache
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.PesquisaOrdemServico.resources
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioBalancoCaixa.resources
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioCadastroOrdemServico.resources
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioCadastroCliente.resources
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioIdentificacao.resources
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.PesquisaCliente.resources
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.Properties.Resources.resources
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.relatorios.DocumentoOrdemServico.resources
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\Vital.TelaInicial.resources
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\EletronicaVital.csproj.GenerateResource.Cache
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\RdlCompile.cache
+C:\PDT_Old\Sistemas\vitaleletronica\EletronicaVital\obj\Debug\RdlCompile.compiled
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\bin\Debug\EletronicaVital.exe.config
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\bin\Debug\EletronicaVital.exe
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\bin\Debug\EletronicaVital.pdb
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\EletronicaVital.csprojAssemblyReference.cache
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.PesquisaOrdemServico.resources
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioBalancoCaixa.resources
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioCadastroOrdemServico.resources
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioCadastroCliente.resources
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.FormularioIdentificacao.resources
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\Vital.formularios.PesquisaCliente.resources
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\Vital.Properties.Resources.resources
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\Vital.relatorios.DocumentoOrdemServico.resources
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\Vital.TelaInicial.resources
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\EletronicaVital.csproj.GenerateResource.cache
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\EletronicaVital.csproj.CoreCompileInputs.cache
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\EletronicaVital.exe
+C:\Users\ptarsofi\OneDrive - NTT DATA EMEAL\Documentos\EletronicaVital_2022\EletronicaVital\vitaleletronica\EletronicaVital\obj\Debug\EletronicaVital.pdb

@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using SVC_1.entidades;
+using SVC_1.controladores;
+namespace SVC_1.relatorios
+{
+    public partial class RelatorioDocumentoAF : Form
+    {
+        public RelatorioDocumentoAF(Entrada entrada, int idObra)
+        {
+            InitializeComponent();
+
+            Microsoft.Reporting.WinForms.ReportParameter[] p = new Microsoft.Reporting.WinForms.ReportParameter[16];
+            p[0] = new Microsoft.Reporting.WinForms.ReportParameter("idEntrada", entrada.IdEntrada + "");
+            p[1] = new Microsoft.Reporting.WinForms.ReportParameter("transporte", entrada.Transporte);
+            //string prazo = entrada.Prazo.Day + "/" + entrada.Prazo.Month + "/" + entrada.Prazo.Year;
+            p[2] = new Microsoft.Reporting.WinForms.ReportParameter("prazo", entrada.Prazo);
+            p[3] = new Microsoft.Reporting.WinForms.ReportParameter("observacao", entrada.Observacao);
+            p[4] = new Microsoft.Reporting.WinForms.ReportParameter("notaFiscal", entrada.NotaFiscal);
+            p[5] = new Microsoft.Reporting.WinForms.ReportParameter("codPagamento", entrada.CondicaoPagamento);
+            p[6] = new Microsoft.Reporting.WinForms.ReportParameter("destinoMaterial", entrada.Destino);
+            p[7] = new Microsoft.Reporting.WinForms.ReportParameter("solicitante", entrada.Solicitante);
+            string dataCadastro = entrada.DataCadastro.Day + "/" + entrada.DataCadastro.Month + "/" + entrada.DataCadastro.Year;
+            p[8] = new Microsoft.Reporting.WinForms.ReportParameter("data", dataCadastro);
+            p[9] = new Microsoft.Reporting.WinForms.ReportParameter("fornecedor", "");
+            p[10] = new Microsoft.Reporting.WinForms.ReportParameter("local", entrada.Local);
+            p[11] = new Microsoft.Reporting.WinForms.ReportParameter("numeroCP", entrada.Num_CP+"");
+            
+            reportViewer1.LocalReport.SetParameters(p);
+        }
+
+        private void RelatorioDocumentoAF_Load(object sender, EventArgs e)
+        {
+            
+        }
+    }
+}

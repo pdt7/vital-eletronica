@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class Fornecedor
+    {
+        private int idFornecedor;
+        private string nome;
+        private string telefone;
+        private string endereco;
+        private string bairro;
+        private string contato;
+        private string observacoes;
+        private string cidade;
+        private string estado;
+
+        public int IdFornecedor
+        {
+            get { return idFornecedor; }
+            set { idFornecedor = value; }
+        }
+
+        public string Nome
+        {
+            get { return nome; }
+            set { nome = value; }
+        }
+
+        public string Telefone
+        {
+            get { return telefone; }
+            set { telefone = value; }
+        }
+
+        public string Endereco
+        {
+            get { return endereco; }
+            set { endereco = value; }
+        }
+
+        public string Bairro
+        {
+            get { return bairro; }
+            set { bairro = value; }
+        }
+
+        public string Observacoes
+        {
+            get { return observacoes; }
+            set { observacoes = value; }
+        }
+
+        public string Contato
+        {
+            get { return contato; }
+            set { contato = value; }
+        }
+
+        public string Cidade
+        {
+            get { return cidade; }
+            set { cidade = value; }
+        }
+
+        public string Estado
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
+    }
+}

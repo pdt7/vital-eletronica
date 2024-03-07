@@ -1,0 +1,242 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using SVC_1.entidades;
+
+namespace SVC_1.repositorio
+{
+    class EntradaDAO : DAO
+    {
+        public int cadastrar(Entrada entrada)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                string strCmd = " INSERT INTO entrada (id_fornecedor, prazo, transporte, local, condicaoPagamento, num_cp, notaFiscal, autorizado, observacao, destino, dataCadastro)"
+                + " VALUES " + "(@id_fornecedor, @prazo, @transporte, @local, @condicaoPagamento, @num_cp, @notaFiscal, @autorizado, @observacao, @destino, @dataCadastro);";
+                cmd.Parameters.Clear();
+
+                cmd.Parameters.AddWithValue("@id_fornecedor", entrada.Fornecedor.IdFornecedor);
+                cmd.Parameters.AddWithValue("@prazo", entrada.Prazo);
+                cmd.Parameters.AddWithValue("@transporte", entrada.Transporte);
+                cmd.Parameters.AddWithValue("@local", entrada.Local);
+                cmd.Parameters.AddWithValue("@condicaoPagamento", entrada.CondicaoPagamento);
+                cmd.Parameters.AddWithValue("@num_cp", entrada.Num_CP);
+                cmd.Parameters.AddWithValue("@notaFiscal", entrada.NotaFiscal);
+                cmd.Parameters.AddWithValue("@autorizado", entrada.Solicitante);
+                cmd.Parameters.AddWithValue("@observacao", entrada.Observacao);
+                cmd.Parameters.AddWithValue("@destino", entrada.Destino);
+                cmd.Parameters.AddWithValue("@dataCadastro", entrada.DataCadastro);
+
+
+                OpenConnection();
+                return Insere(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível cadastrar a entrada " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void atualizar(Entrada entrada)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                string strCmd = " UPDATE entrada SET id_fornecedor = @id_fornecedor, prazo = @prazo, transporte = @transporte, local = @local, " +
+                                " condicaoPagamento = @condicaoPagamento, num_cp = @num_cp, notaFiscal = @notaFiscal, autorizado = @autorizado, " +
+                                " observacao = @observacao, destino = @destino, dataCadastro = @dataCadastro WHERE id_entrada = @id_entrada";
+                cmd.Parameters.Clear();
+
+                cmd.Parameters.AddWithValue("@id_fornecedor", entrada.Fornecedor.IdFornecedor);
+                cmd.Parameters.AddWithValue("@prazo", entrada.Prazo);
+                cmd.Parameters.AddWithValue("@transporte", entrada.Transporte);
+                cmd.Parameters.AddWithValue("@local", entrada.Local);
+                cmd.Parameters.AddWithValue("@condicaoPagamento", entrada.CondicaoPagamento);
+                cmd.Parameters.AddWithValue("@num_cp", entrada.Num_CP);
+                cmd.Parameters.AddWithValue("@notaFiscal", entrada.NotaFiscal);
+                cmd.Parameters.AddWithValue("@autorizado", entrada.Solicitante);
+                cmd.Parameters.AddWithValue("@observacao", entrada.Observacao);
+                cmd.Parameters.AddWithValue("@destino", entrada.Destino);
+                cmd.Parameters.AddWithValue("@dataCadastro", entrada.DataCadastro);
+                cmd.Parameters.AddWithValue("@id_entrada", entrada.IdEntrada);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível cadastrar a entrada " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void remover(int idEntrada)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " UPDATE entrada SET excluido = 'S' WHERE id_entrada=@id_entrada;";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_entrada", idEntrada);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public Entrada consultarEntradaPorId(int idEntrada)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM entrada e, fornecedor f WHERE f.id_fornecedor = e.id_fornecedor " +
+                                " AND id_entrada=@id_entrada";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_entrada", idEntrada);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Entrada> listaEntrada = new List<Entrada>();
+                listaEntrada = Popula(dataReader);
+                if (listaEntrada != null && listaEntrada.Count > 0)
+                {
+                    return listaEntrada.First<Entrada>();
+                }
+                else
+                {
+                    return null;
+                }
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        private List<Entrada> Popula(MySqlDataReader dataReader)
+        {
+            List<Entrada> listaEntrada = new List<Entrada>();
+            while (dataReader.Read())
+            {
+                Fornecedor fornecedor = new Fornecedor();
+                fornecedor.IdFornecedor = Convert.ToInt32(dataReader["id_fornecedor"]);
+                fornecedor.Nome = dataReader["nome"].ToString();
+
+                Entrada entrada = new Entrada();
+                entrada.Fornecedor = fornecedor;
+                entrada.Prazo = dataReader["prazo"].ToString();
+                entrada.Transporte = dataReader["transporte"].ToString();
+                entrada.Local = dataReader["local"].ToString();
+                entrada.CondicaoPagamento = dataReader["local"].ToString();
+                entrada.Num_CP = Convert.ToInt32(dataReader["num_cp"].ToString());
+                entrada.NotaFiscal = dataReader["notaFiscal"].ToString();
+                entrada.Solicitante = dataReader["autorizado"].ToString();
+                entrada.Observacao = dataReader["observacao"].ToString();
+                entrada.Destino = dataReader["destino"].ToString();
+                entrada.DataCadastro = Convert.ToDateTime(dataReader["dataCadastro"]);
+                entrada.IdEntrada = Convert.ToInt32(dataReader["id_entrada"].ToString());
+                listaEntrada.Add(entrada);
+            }
+            return listaEntrada;
+        }
+
+        public List<Entrada> pesquisarEntrada(object valorPesquisa, string parametro, Usuario usuario)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = "";
+                if (usuario.isAdministrador())
+                {
+                    strCmd = " SELECT * FROM entrada e , fornecedor f WHERE f.id_fornecedor = e.id_fornecedor AND e.excluido = 'N' ";
+                }
+                else
+                {
+                    strCmd = " SELECT * FROM entrada e , fornecedor f, itementrada i WHERE i.id_obra = @idObra AND i.id_entrada = e.id_entrada AND f.id_fornecedor = e.id_fornecedor AND e.excluido = 'N' ";
+                    cmd.Parameters.AddWithValue("@idObra", usuario.Obra.idObra);
+                }
+                if ("Número CP".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND e.num_cp=@num_cp ";
+                    cmd.Parameters.AddWithValue("@num_cp", valorPesquisa);
+                }
+                else if ("Data Cadastro".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND e.dataCadastro = @dataCadastro ";
+                    DateTime date = new DateTime();
+                    date = (DateTime)valorPesquisa;
+                    cmd.Parameters.AddWithValue("@dataCadastro", valorPesquisa);
+                }
+                else if ("Solicitante".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND e.autorizado like '%@autorizado%' ";
+                    cmd.Parameters.AddWithValue("@autorizado", valorPesquisa);
+                }
+                else if ("Número AF".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND e.id_entrada = @id_entrada ";
+                    cmd.Parameters.AddWithValue("@id_entrada", valorPesquisa);
+                }
+                else if ("Fornecedor".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND f.nome like '%@fornecedor%' ";
+                    cmd.Parameters.AddWithValue("@fornecedor", valorPesquisa);
+                }
+                else if ("Nota Fiscal".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND e.notaFiscal = @nota ";
+                    cmd.Parameters.AddWithValue("@nota", valorPesquisa);
+                }
+                strCmd = strCmd + " group by e.id_entrada ";
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Entrada> listaEntrada = Popula(dataReader);
+                if (listaEntrada != null && listaEntrada.Count > 0)
+                {
+                    return listaEntrada;
+                }
+                else
+                {
+                    return null;
+                }
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+        }
+
+    }
+}

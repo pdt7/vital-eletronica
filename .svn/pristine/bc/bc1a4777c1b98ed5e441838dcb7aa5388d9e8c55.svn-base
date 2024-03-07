@@ -1,0 +1,217 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using SVC_1.entidades;
+
+namespace SVC_1.repositorio
+{
+    class UsuarioDAO : DAO
+    {
+        public Usuario consultaUsuarioLogin(string login)
+        {
+            try
+            {
+                string strCmd = "SELECT * FROM usuario WHERE usuario.login=@login";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@login", login);
+                OpenConnection();
+                List<Usuario> listaUsuarios = new List<Usuario>();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                listaUsuarios = popula(dataReader);
+                if (listaUsuarios != null && listaUsuarios.Count > 0)
+                {
+                    return listaUsuarios.First<Usuario>();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar pelo Login informado. " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public int cadastrarUsuario(Usuario usuario)
+        {
+            int idUsuario = 0;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = "INSERT INTO usuario (nome, login, senha, idObra, superUsuario) VALUES (@nome, @login, @senha, @idObra, @superUsuario);";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@nome", usuario.Nome);
+                cmd.Parameters.AddWithValue("@login", usuario.Login);
+                cmd.Parameters.AddWithValue("@senha", usuario.Senha);
+                cmd.Parameters.AddWithValue("@idObra", usuario.Obra.IdObra);
+                cmd.Parameters.AddWithValue("@superUsuario", usuario.Administrador);
+
+                OpenConnection();
+                idUsuario = Insere(cmd, strCmd);
+                CloseConnection();
+                return idUsuario;
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void atualizar(Usuario usuario)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " UPDATE usuario SET nome=@nome, login=@login, senha=@senha, idObra=@idObra, superUsuario=@superUsuario " +
+                                " WHERE id_usuario=@id_usuario;";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_usuario", usuario.IdUsuario);
+                cmd.Parameters.AddWithValue("@nome", usuario.Nome);
+                cmd.Parameters.AddWithValue("@login", usuario.Login);
+                cmd.Parameters.AddWithValue("@senha", usuario.Senha);
+                cmd.Parameters.AddWithValue("@idObra", usuario.Obra.IdObra);
+                cmd.Parameters.AddWithValue("@superUsuario", usuario.Administrador);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void remover(int idUsuario)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+                string strCmd = " DELETE FROM usuario " +
+                                " WHERE id_usuario = @id_usuario; ";
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+            }
+            catch
+            {
+                throw new Exception("Não foi possível remover o Usuario.");
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public Usuario consultarUsuarioPorId(int idUsuario)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM usuario" +
+                                " WHERE id_usuario=@id_usuario";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Usuario> listaUsuarios = new List<Usuario>();
+                listaUsuarios = popula(dataReader);
+                if (listaUsuarios != null && listaUsuarios.Count > 0)
+                {
+                    return listaUsuarios.First<Usuario>();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o usuario pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        private List<Usuario> popula(MySqlDataReader dataReader)
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+
+            while (dataReader.Read())
+            {
+                try
+                {
+
+                    Usuario usuario = new Usuario();
+                    usuario.IdUsuario = Convert.ToInt32(dataReader["id_usuario"]);
+                    usuario.Nome = dataReader["nome"].ToString();
+                    usuario.Login = dataReader["login"].ToString();
+                    usuario.Senha = dataReader["senha"].ToString();
+                    usuarios.Add(usuario);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+            return usuarios;
+        }
+
+
+        public List<Usuario> consultarUsuario(string valorPesquisa, string parametro)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = "SELECT * FROM usuario p ";
+                if ("Nome".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE p.nome like '%"+valorPesquisa+"%';";
+                }
+                else if ("Login".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE p.login  like '%"+valorPesquisa+"%' ";
+                }
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Usuario> listaUsuarios = new List<Usuario>();
+                listaUsuarios = popula(dataReader);
+                if (listaUsuarios != null && listaUsuarios.Count > 0)
+                {
+                    return listaUsuarios;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o usuario pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+
+ 
+    }
+}

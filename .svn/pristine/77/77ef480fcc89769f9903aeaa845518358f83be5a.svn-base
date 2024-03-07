@@ -1,0 +1,193 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using SVC_1.entidades;
+
+namespace SVC_1.repositorio
+{
+    class AvisoLancamentoDAO : DAO
+    {
+        public int cadastrar(AvisoLancamento aviso)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                string strCmd = " INSERT INTO avisoLancamento (remessaMaterial, aviso, id_obraDebito, idCredito, descDestinoCredito, data_criacao)"
+                + " VALUES " + " (@remessaMaterial, @aviso, @id_obraDebito, @idCredito, @descDestinoCredito, @data);";
+                cmd.Parameters.Clear();
+
+                cmd.Parameters.AddWithValue("@remessaMaterial", aviso.RemessaMaterial);
+                cmd.Parameters.AddWithValue("@aviso", aviso.Aviso);
+                cmd.Parameters.AddWithValue("@id_obraDebito", aviso.Debito.IdObra);
+                cmd.Parameters.AddWithValue("@idCredito", aviso.IdCredito);
+                cmd.Parameters.AddWithValue("@descDestinoCredito", aviso.DestinoCredito);
+                cmd.Parameters.AddWithValue("@data", aviso.Data);
+
+                OpenConnection();
+                return Insere(cmd, strCmd);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível cadastrar a Saida " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public AvisoLancamento consultarAvisoLancamentoPorId(int idAviso)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM avisoLancamento a, obra o WHERE  a.excluido = 'N' AND a.id_obraDebito = o.id_obra " +
+                                " AND a.id_avisoLancamento=@id_avisoLancamento";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_avisoLancamento", idAviso);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<AvisoLancamento> lista = new List<AvisoLancamento>();
+                lista = Popula(dataReader);
+                if (lista != null && lista.Count > 0)
+                {
+                    return lista.First<AvisoLancamento>();
+                }
+                else
+                {
+                    return null;
+                }
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        private List<AvisoLancamento> Popula(MySqlDataReader dataReader)
+        {
+            List<AvisoLancamento> listaAviso = new List<AvisoLancamento>();
+            while (dataReader.Read())
+            {
+                Obra obra = new Obra();
+                obra.IdObra = Convert.ToInt32(dataReader["id_obra"]);
+                obra.Local = dataReader["local"].ToString();
+                obra.Codigo = dataReader["codigo"].ToString();
+
+                AvisoLancamento aviso = new AvisoLancamento();
+                aviso.Debito = obra;
+                aviso.IdAvisoLancamento = Convert.ToInt32(dataReader["id_avisoLancamento"].ToString());
+                aviso.Data = Convert.ToDateTime(dataReader["data_criacao"]);
+                aviso.Aviso = Convert.ToInt32(dataReader["aviso"]);
+                aviso.RemessaMaterial = Convert.ToInt32(dataReader["remessaMaterial"]);
+                aviso.IdCredito = Convert.ToInt32(dataReader["idCredito"]);
+                aviso.DestinoCredito = dataReader["descDestinoCredito"].ToString();
+
+                listaAviso.Add(aviso);
+            }
+            return listaAviso;
+        }
+
+        public List<AvisoLancamento> pesquisarAvisoLancamento(string valorPesquisa, string parametro)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = " SELECT * FROM avisoLancamento a, obra o WHERE  a.excluido = 'N' AND a.id_obraDebito = o.id_obra ";
+                if ("Número Documento".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND a.id_avisoLancamento=@id_avisoLancamento ";
+                    cmd.Parameters.AddWithValue("@id_avisoLancamento", valorPesquisa);
+                }
+                else if ("Local da Obra".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND o.local like '%@local%' ";
+                    cmd.Parameters.AddWithValue("@local", valorPesquisa);
+                }
+                
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<AvisoLancamento> lista = Popula(dataReader);
+                if (lista != null && lista.Count > 0)
+                {
+                    return lista;
+                }
+                else
+                {
+                    return null;
+                }
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+        }
+
+        public void atualizar(AvisoLancamento aviso)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                string strCmd = " UPDATE avisoLancamento SET remessaMaterial = @remessaMaterial, aviso = @aviso, id_obraDebito = @id_obraDebito, idCredito = @idCredito, descDestinoCredito = @descDestinoCredito, data_criacao = @data_criacao WHERE id_avisoLancamento =@id_avisoLancamento";
+                cmd.Parameters.Clear();
+
+                cmd.Parameters.AddWithValue("@remessaMaterial", aviso.RemessaMaterial);
+                cmd.Parameters.AddWithValue("@aviso", aviso.Aviso);
+                cmd.Parameters.AddWithValue("@id_obraDebito", aviso.Debito.IdObra);
+                cmd.Parameters.AddWithValue("@idCredito", aviso.IdCredito);
+                cmd.Parameters.AddWithValue("@descDestinoCredito", aviso.DestinoCredito);
+                cmd.Parameters.AddWithValue("@data_criacao", aviso.Data);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível cadastrar a entrada " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void remover(int idAviso)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " UPDATE avisoLancamento SET excluido = 'S' WHERE id_avisoLancamento=@id_avisoLancamento;";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_avisoLancamento", idAviso);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+    }
+}

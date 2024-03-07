@@ -1,0 +1,121 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using SVC_1.entidades;
+
+namespace SVC_1.repositorio
+{
+    class ItemAvisoLancamentoDAO : DAO
+    {
+        public int cadastrar(ItemAvisoLancamento item)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                string strCmd = " INSERT INTO itemAvisoLancamento (discriminacao, id_unidadeMedida, id_utilizacao, precoUnitario, quantidade, observacao, numeroCP, id_avisoLancamento)"
+                + " VALUES " + "(@discriminacao, @id_unidadeMedida, @id_utilizacao, @precoUnitario, @quantidade, @observacao, @numeroCP, @id_avisoLancamento);";
+                cmd.Parameters.Clear();
+
+                cmd.Parameters.AddWithValue("@discriminacao", item.Discriminacao);
+                cmd.Parameters.AddWithValue("@id_unidadeMedida", item.UnidadeMedida.IdUnidade);
+                cmd.Parameters.AddWithValue("@id_utilizacao", item.Utilizacao.IdUtilizacao);
+                cmd.Parameters.AddWithValue("@precoUnitario", item.PrecoUnitario);
+                cmd.Parameters.AddWithValue("@quantidade", item.Quantidade);
+                cmd.Parameters.AddWithValue("@observacao", item.Observacao);
+                cmd.Parameters.AddWithValue("@numeroCP", item.NumeroCP);
+                cmd.Parameters.AddWithValue("@id_avisoLancamento", item.AvisoLancamento.IdAvisoLancamento);
+                
+                OpenConnection();
+                return Insere(cmd, strCmd);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível cadastrar o item Saida " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public int consultaNumeroItensAvisoLancamento(int idAviso)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            string strCmd = " SELECT COUNT(*) CONTADOR FROM itemAvisoLancamento WHERE id_avisoLancamento = @id_avisoLancamento ";
+
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@id_avisoLancamento", idAviso);
+            OpenConnection();
+            MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+            int contador = 0;
+            while (dataReader.Read())
+            {
+                contador = Convert.ToInt32(dataReader["CONTADOR"]);
+            }
+            return contador;
+        }
+
+        public List<ItemAvisoLancamento> consultaItensAvisoLancamento(int id_avisoLancamento)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            string strCmd = " SELECT i.*, u.prefixo prefixoUtilizacao, u.nome nomeUtilizacao, um.prefixo prefixo FROM itemAvisoLancamento i, unidade_medida um, utilizacao u " +
+                            " WHERE i.id_avisoLancamento = @id_avisoLancamento AND i.id_unidadeMedida = um.id_unidade_medida AND i.id_utilizacao = u.id_utilizacao ";
+
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@id_avisoLancamento", id_avisoLancamento);
+            OpenConnection();
+            MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+            List<ItemAvisoLancamento> listaItens = new List<ItemAvisoLancamento>();
+            while (dataReader.Read())
+            {
+                ItemAvisoLancamento item = new ItemAvisoLancamento();
+                UnidadeMedida unidade = new UnidadeMedida();
+                unidade.IdUnidade = Convert.ToInt32(dataReader["id_unidadeMedida"]);
+                unidade.Sigla = dataReader["prefixo"].ToString();
+                item.UnidadeMedida = unidade;
+
+                Utilizacao utilizacao = new Utilizacao();
+                utilizacao.IdUtilizacao = Convert.ToInt32(dataReader["id_utilizacao"]);
+                utilizacao.Nome = dataReader["nomeUtilizacao"].ToString();
+                utilizacao.Prefixo = dataReader["prefixoUtilizacao"].ToString();
+                item.Utilizacao = utilizacao;
+
+                item.Quantidade = Convert.ToSingle(dataReader["quantidade"]);
+                item.Discriminacao = dataReader["discriminacao"].ToString();
+                item.NumeroCP = Convert.ToInt32(dataReader["numeroCP"]);
+                item.Observacao = Convert.ToString(dataReader["observacao"]);
+                item.PrecoUnitario = Convert.ToSingle(dataReader["precoUnitario"]);
+                listaItens.Add(item);
+            }
+            CloseConnection();
+            return listaItens;
+        }
+
+        public void removeTodosItens(int idAvisoLacamento)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@idSaida", idAvisoLacamento);
+                string strCmd = " DELETE FROM itemAvisoLancamento " +
+                                " WHERE id_avisoLancamento = @id_avisoLancamento ";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_avisoLancamento", idAvisoLacamento);
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+            }
+            catch
+            {
+                throw new Exception("Não foi possível remover o item da saida.");
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+    }
+}

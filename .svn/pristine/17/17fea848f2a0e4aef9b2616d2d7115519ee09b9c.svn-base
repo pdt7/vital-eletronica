@@ -1,0 +1,250 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using SVC_1.entidades;
+using MySql.Data.MySqlClient;
+
+namespace SVC_1.repositorio
+{
+    class FornecedorDAO : DAO
+    {
+        public int cadastrar(Fornecedor fornecedor)
+        {
+            int idCliente = 0;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " INSERT INTO fornecedor(nome, telefone, endereco, bairro, contato, observacoes, cidade, estado" + 
+                    ") VALUES (@nome, @telefone, @endereco, @bairro, @contato, @observacoes, @cidade, @estado);";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@nome", fornecedor.Nome);
+                cmd.Parameters.AddWithValue("@telefone", fornecedor.Telefone);
+                cmd.Parameters.AddWithValue("@endereco", fornecedor.Endereco);
+                cmd.Parameters.AddWithValue("@bairro", fornecedor.Bairro);
+                cmd.Parameters.AddWithValue("@contato", fornecedor.Contato);
+                cmd.Parameters.AddWithValue("@estado", fornecedor.Estado);
+                cmd.Parameters.AddWithValue("@observacoes", fornecedor.Observacoes);
+                cmd.Parameters.AddWithValue("@cidade", fornecedor.Cidade);
+
+                OpenConnection();
+                idCliente = Insere(cmd, strCmd);
+                CloseConnection();
+                return idCliente;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void atualizar(Fornecedor fornecedor)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " UPDATE fornecedor SET nome=@nome, telefone=@telefone, endereco=@endereco, " +
+                                " bairro=@bairro, contato=@contato, estado=@estado, observacoes=@observacoes, cidade=@cidade" +
+                                " WHERE id_fornecedor=@id_fornecedor;";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_fornecedor", fornecedor.IdFornecedor);
+                cmd.Parameters.AddWithValue("@nome", fornecedor.Nome);
+                cmd.Parameters.AddWithValue("@telefone", fornecedor.Telefone);
+                cmd.Parameters.AddWithValue("@endereco", fornecedor.Endereco);
+                cmd.Parameters.AddWithValue("@bairro", fornecedor.Bairro);
+                cmd.Parameters.AddWithValue("@contato", fornecedor.Contato);
+                cmd.Parameters.AddWithValue("@estado", fornecedor.Estado);
+                cmd.Parameters.AddWithValue("@observacoes", fornecedor.Observacoes);
+                cmd.Parameters.AddWithValue("@cidade", fornecedor.Cidade);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void remover(int idFornecedor)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_fornecedor", idFornecedor);
+                string strCmd = " DELETE FROM fornecedor " +
+                                " WHERE id_fornecedor = @id_fornecedor; ";
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+            }
+            catch
+            {
+                throw new Exception("Não foi possível remover o Fornecedor.");
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public Fornecedor consultarFornecedorPorId(int idFornecedor)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM fornecedor" +
+                                " WHERE id_fornecedor=@id_fornecedor";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_fornecedor", idFornecedor);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Fornecedor> listaFornecedors = new List<Fornecedor>();
+                listaFornecedors = Popula(dataReader);
+                if (listaFornecedors.Count > 0)
+                {
+                    return listaFornecedors.First<Fornecedor>();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o fornecedor pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+
+        public bool existeFornecedor(string nome)
+        {
+            try
+            {
+                string strCmd = " SELECT 1 FROM fornecedor" +
+                                " WHERE upper(nome)=@nome";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@nome", nome.ToUpper());
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                if (dataReader.HasRows)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+             }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao consultar fornecedor." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+
+        private List<Fornecedor> Popula(MySqlDataReader dataReader)
+        {
+            List<Fornecedor> fornecedors = new List<Fornecedor>();
+
+            while (dataReader.Read())
+            {
+                try
+                {
+                    Fornecedor fornecedor = new Fornecedor();
+                    fornecedor.IdFornecedor = Convert.ToInt32(dataReader["id_fornecedor"]);
+                    fornecedor.Bairro = dataReader["bairro"].ToString();
+                    fornecedor.Cidade = dataReader["cidade"].ToString();
+                    fornecedor.Estado = dataReader["estado"].ToString();
+                    fornecedor.Endereco = dataReader["endereco"].ToString();
+                    fornecedor.Contato = dataReader["contato"].ToString();
+                    fornecedor.Nome = dataReader["nome"].ToString();
+                    fornecedor.Telefone = dataReader["telefone"].ToString();
+                    fornecedor.Observacoes = dataReader["observacoes"].ToString();
+
+                    fornecedors.Add(fornecedor);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+            return fornecedors;
+        }
+
+
+        public List<Fornecedor> consultarFornecedor(string valorPesquisa, string parametro)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = " SELECT * FROM fornecedor p";
+                if ("Nome".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE upper(p.nome)  like '%" + valorPesquisa.ToUpper() + "%'";
+                    //cmd.Parameters.AddWithValue("@nome", valorPesquisa.ToUpper());
+                }
+                else if ("Bairro".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE upper(p.bairro) like '%" + valorPesquisa.ToUpper() + "%'";
+                    //cmd.Parameters.AddWithValue("@bairro", valorPesquisa.ToUpper());
+                }
+                else if ("Cidade".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE upper(p.cidade) like '%" + valorPesquisa.ToUpper() + "%'";
+                    //cmd.Parameters.AddWithValue("@cidade", valorPesquisa.ToUpper());
+                }
+                else if ("Estado".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE upper(p.estado) like '%" + valorPesquisa.ToUpper() + "%'";
+                    //cmd.Parameters.AddWithValue("@estado", valorPesquisa.ToUpper());
+                }
+                else if ("Endereco".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE upper(p.endereco) like '%" + valorPesquisa.ToUpper() + "%'";
+                    //cmd.Parameters.AddWithValue("@endereco", valorPesquisa.ToUpper());
+                }
+                else if ("Contato".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE upper(p.contato) like '%" + valorPesquisa.ToUpper() + "%'";
+                    //cmd.Parameters.AddWithValue("@contato", valorPesquisa.ToUpper());
+                }
+                else if ("Telefone".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE p.telefone=@telefone";
+                    cmd.Parameters.AddWithValue("@telefone", valorPesquisa);
+                }
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Fornecedor> listaFornecedors = new List<Fornecedor>();
+                listaFornecedors = Popula(dataReader);
+                return listaFornecedors;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o fornecedor pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+
+    }
+}

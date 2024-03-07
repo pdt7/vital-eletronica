@@ -1,0 +1,89 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using SVC_1.util;
+using SVC_1.controladores;
+using SVC_1.entidades;
+
+namespace SVC_1.formularios
+{
+    public partial class FormularioCadastroCliente : Form
+    {
+        ControladorCliente controladorCliente;
+
+        public int idProduto;
+        public int idCategoria;
+        public int idUnidadeMedida;
+        public Cliente produto = null;
+
+        public FormularioCadastroCliente()
+        {
+            InitializeComponent();
+            controladorCliente = new ControladorCliente();
+            idProduto = 0;
+            idCategoria = 0;
+            idUnidadeMedida = 0;
+        }
+
+        private void FormularioCadastroProduto_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void botaoLimpar_Click(object sender, EventArgs e)
+        {
+            ManipulaCampos.LimparCampos(this.groupBoxProduto);
+        }
+
+        private void botaoCadastrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nome = textNome.Text;
+                string cidade = textCidade.Text;
+                string endereco = textEnd.Text;
+                string bairro = textBairro.Text;
+                string telefone = textTelefone.Text;
+                string complemento = textComp.Text;
+                int numero = Convert.ToInt32(textNum.Text);
+                                
+                if (nome == "")
+                {
+                    throw new Exception("O campo nome precisa ser informado!");
+                }
+                
+                /*if (idProduto != 0)
+                {
+                    MessageBox.Show(controladorProduto.atualizar(idProduto, nome, limite, codigo, categoria, unidadeMedida, idObra));
+                }
+                else
+                {*/
+                    MessageBox.Show(controladorCliente.cadastrar(nome, cidade, endereco, bairro, telefone, complemento, numero));
+                    ManipulaCampos.LimparCampos(groupBoxProduto);
+                //}
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void botaoCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        public void atualizarDados(Cliente produto)
+        {
+            textNome.Text = produto.Nome;
+        }
+
+    }
+}

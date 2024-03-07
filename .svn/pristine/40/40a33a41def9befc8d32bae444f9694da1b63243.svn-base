@@ -1,0 +1,162 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using SVC_1.entidades;
+
+namespace SVC_1.repositorio
+{
+    class UtilizacaoDAO : DAO
+    {
+        public int cadastrar(Utilizacao utilizacao)
+        {
+            int idLancamento = 0;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                string strCmd = " INSERT INTO utilizacao (nome, prefixo) VALUES " +
+                                " (@nome, @prefixo);";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@nome", utilizacao.Nome);
+                cmd.Parameters.AddWithValue("@prefixo", utilizacao.Prefixo);
+
+
+                OpenConnection();
+                idLancamento = Insere(cmd, strCmd);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível cadastrar o Lançamento " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return idLancamento;
+        }
+
+        public List<Utilizacao> consultarUtilizacao(string valorPesquisa, string parametro)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = " SELECT * FROM utilizacao p";
+                if ("Nome".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE upper(p.nome) like '%@valorPesquisa%'";
+                    cmd.Parameters.AddWithValue("@valorPesquisa", valorPesquisa);
+                }
+                if ("Prefixo".Equals(parametro))
+                {
+                    strCmd = strCmd + " WHERE upper(p.prefixo) like '%@valorPesquisa%'";
+                    cmd.Parameters.AddWithValue("@valorPesquisa", valorPesquisa);
+                }
+
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Utilizacao> lista = new List<Utilizacao>();
+                lista = Popula(dataReader);
+                if (lista != null && lista.Count > 0)
+                {
+                    return lista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o categoria pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        private List<Utilizacao> Popula(MySqlDataReader dataReader)
+        {
+            List<Utilizacao> lista = new List<Utilizacao>();
+
+            while (dataReader.Read())
+            {
+                try
+                {
+                    Utilizacao utilizacao = new Utilizacao();
+                    utilizacao.IdUtilizacao = Convert.ToInt32(dataReader["id_utilizacao"]);
+                    utilizacao.Nome = dataReader["nome"].ToString();
+                    utilizacao.Prefixo = dataReader["prefixo"].ToString();
+                    lista.Add(utilizacao);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+            return lista;
+        }
+
+        public Utilizacao consultarUtilizacaoPorId(int idUtilizacao)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM utilizacao" +
+                                " WHERE id_utilizacao=@id_utilizazcao";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_utilizazcao", idUtilizacao);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Utilizacao> lista = new List<Utilizacao>();
+                lista = Popula(dataReader);
+                if (lista != null && lista.Count > 0)
+                {
+                    return lista.First<Utilizacao>();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o categoria pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void atualizar(Utilizacao utilizacao)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " UPDATE utilizacao SET nome=@nome, prefixo=@prefixo " +
+                                " WHERE id_utilizacao=@id_utilizacao;";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_utilizacao", utilizacao.IdUtilizacao);
+                cmd.Parameters.AddWithValue("@nome", utilizacao.Nome);
+                cmd.Parameters.AddWithValue("@prefixo", utilizacao.Prefixo);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+    }
+}

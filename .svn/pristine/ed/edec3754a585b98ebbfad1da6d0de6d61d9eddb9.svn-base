@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class Telefone
+    {
+        private string numero;
+        private int idTelefone;
+
+        public Telefone()
+        {
+        }
+
+        public Telefone(int idTelefone, string numero)
+        {
+            this.idTelefone = idTelefone;
+            this.numero = numero;
+        }
+
+        public Telefone(string numero)
+        {
+            this.numero = numero;
+        }
+
+        public string Numero
+        {
+            get { return numero; }
+            set { numero = value; }
+        }
+
+        public int IdTelefone
+        {
+            get { return idTelefone; }
+            set { idTelefone = value; }
+        }
+    }
+}

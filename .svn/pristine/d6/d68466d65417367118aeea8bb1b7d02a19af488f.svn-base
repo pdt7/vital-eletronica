@@ -1,0 +1,191 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using SVC_1.entidades;
+
+namespace SVC_1.repositorio
+{
+    class SaidaDAO : DAO
+    {
+        public int cadastrar(Saida saida)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                string strCmd = " INSERT INTO saida (responsavel, data, id_obra)"
+                + " VALUES " + "(@responsavel, @data, @id_obra);";
+                cmd.Parameters.Clear();
+
+                cmd.Parameters.AddWithValue("@responsavel", saida.Responsavel);
+                cmd.Parameters.AddWithValue("@data", saida.Data);
+                cmd.Parameters.AddWithValue("@id_obra", saida.Obra.IdObra);
+
+                OpenConnection();
+                return Insere(cmd, strCmd);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível cadastrar a Saida " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public Saida consultarSaidaPorId(int idSaida)
+        {
+            try
+            {
+                string strCmd = " SELECT * FROM saida s, obra o WHERE  s.excluido = 'N' AND s.id_obra = o.id_obra " +
+                                " AND s.id_saida=@id_saida";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_saida", idSaida);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Saida> listaSaida = new List<Saida>();
+                listaSaida = Popula(dataReader);
+                if (listaSaida != null && listaSaida.Count > 0)
+                {
+                    return listaSaida.First<Saida>();
+                }
+                else
+                {
+                    return null;
+                }
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        private List<Saida> Popula(MySqlDataReader dataReader)
+        {
+            List<Saida> listaSaida = new List<Saida>();
+            while (dataReader.Read())
+            {
+                Obra obra = new Obra();
+                obra.IdObra = Convert.ToInt32(dataReader["id_obra"]);
+                obra.Local = dataReader["local"].ToString();
+
+                Saida saida = new Saida();
+                saida.Obra = obra;
+                saida.IdSaida = Convert.ToInt32(dataReader["id_saida"].ToString());
+                saida.Responsavel = dataReader["responsavel"].ToString();
+                saida.Data = Convert.ToDateTime(dataReader["data"]);
+                listaSaida.Add(saida);
+            }
+            return listaSaida;
+        }
+
+        public List<Saida> pesquisarSaida(string valorPesquisa, string parametro, Usuario usuario)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Parameters.Clear();
+                string strCmd = "";
+                if (usuario.isAdministrador())
+                {
+                    strCmd = " SELECT * FROM saida s, obra o WHERE  s.excluido = 'N' AND s.id_obra = o.id_obra ";
+                }
+                else
+                {
+                    strCmd = " SELECT * FROM saida s, obra o WHERE  s.excluido = 'N' AND s.id_obra = o.id_obra AND o.id_obra = @idObra ";
+                    cmd.Parameters.AddWithValue("@idObra", usuario.Obra.IdObra);
+                }
+                if ("Número CP".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND s.id_saida=@id_saida ";
+                    cmd.Parameters.AddWithValue("@id_saida", valorPesquisa);
+                }
+                else if ("Data Cadastro".Equals(parametro))
+                {
+                    strCmd = strCmd + " AND o.local like '%@local%'S ";
+                    cmd.Parameters.AddWithValue("@local", valorPesquisa);
+                }
+
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+                List<Saida> listaSaida = Popula(dataReader);
+                if (listaSaida != null && listaSaida.Count > 0)
+                {
+                    return listaSaida;
+                }
+                else
+                {
+                    return null;
+                }
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível localizar o produto pela ID informada." + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+        }
+
+        public void atualizar(Saida saida)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                string strCmd = " UPDATE saida SET responsavel = @responsavel, data = @data WHERE id_saida =@id_saida";
+                cmd.Parameters.Clear();
+
+                cmd.Parameters.AddWithValue("@responsavel", saida.Responsavel);
+                cmd.Parameters.AddWithValue("@data", saida.Data);
+                cmd.Parameters.AddWithValue("@id_saida", saida.IdSaida);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível cadastrar a entrada " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void remover(int idSaida)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                String strCmd = " UPDATE saida SET excluido = 'S' WHERE id_saida=@id_saida;";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id_saida", idSaida);
+
+                OpenConnection();
+                ExecutaComando(cmd, strCmd);
+                CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+    }
+}

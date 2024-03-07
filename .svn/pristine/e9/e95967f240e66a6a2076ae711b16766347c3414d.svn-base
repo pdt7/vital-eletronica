@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2F71CCE6-3245-4AC2-9BF7-BD1B9710236E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SVC_1</RootNamespace>
+    <AssemblyName>SVC_1</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="MySql.Data, Version=6.3.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Web, Version=6.3.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="controladores\ControladorCliente.cs" />
+    <Compile Include="controladores\ControladorUsuario.cs" />
+    <Compile Include="controladores\ControladorOrdemServico.cs" />
+    <Compile Include="controladores\Fachada.cs" />
+    <Compile Include="entidades\AvisoLancamento.cs" />
+    <Compile Include="entidades\Categoria.cs" />
+    <Compile Include="entidades\OrdemServico.cs" />
+    <Compile Include="entidades\Funcionalidade.cs" />
+    <Compile Include="entidades\CotacaoPreco.cs" />
+    <Compile Include="entidades\ItemAvisoLancamento.cs" />
+    <Compile Include="entidades\ItemCotacaoPreco.cs" />
+    <Compile Include="entidades\Endereco.cs" />
+    <Compile Include="entidades\Entrada.cs" />
+    <Compile Include="entidades\Fornecedor.cs" />
+    <Compile Include="entidades\ItemEntrada.cs" />
+    <Compile Include="entidades\ItemSaida.cs" />
+    <Compile Include="entidades\Obra.cs" />
+    <Compile Include="entidades\PessoaFisica.cs" />
+    <Compile Include="entidades\Cliente.cs" />
+    <Compile Include="entidades\Saida.cs" />
+    <Compile Include="entidades\Telefone.cs" />
+    <Compile Include="entidades\TipoUsuario.cs" />
+    <Compile Include="entidades\UnidadeMedida.cs" />
+    <Compile Include="entidades\Usuario.cs" />
+    <Compile Include="entidades\Utilizacao.cs" />
+    <Compile Include="formularios\FormularioCadastroOrdemServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\FormularioCadastroOrdemServico.Designer.cs">
+      <DependentUpon>FormularioCadastroOrdemServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\FormularioCadastroCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\FormularioCadastroCliente.Designer.cs">
+      <DependentUpon>FormularioCadastroCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\FormularioIdentificacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\FormularioIdentificacao.designer.cs">
+      <DependentUpon>FormularioIdentificacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\PesquisaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\PesquisaCliente.Designer.cs">
+      <DependentUpon>PesquisaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formularios\FormularioCadastroOrdemServico.resx">
+      <DependentUpon>FormularioCadastroOrdemServico.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\FormularioCadastroCliente.resx">
+      <DependentUpon>FormularioCadastroCliente.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\FormularioIdentificacao.resx">
+      <DependentUpon>FormularioIdentificacao.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\PesquisaCliente.resx">
+      <DependentUpon>PesquisaCliente.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\ordemServico.rdlc" />
+    <EmbeddedResource Include="relatorios\RelatorioDocumentoAF.resx">
+      <DependentUpon>RelatorioDocumentoAF.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TelaInicial.resx">
+      <DependentUpon>TelaInicial.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="vitalDataSet.xsc">
+      <DependentUpon>vitalDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="vitalDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vitalDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="vitalDataSet.xss">
+      <DependentUpon>vitalDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="vitalDataSet1.xsc">
+      <DependentUpon>vitalDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="vitalDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vitalDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="vitalDataSet1.xss">
+      <DependentUpon>vitalDataSet1.xsd</DependentUpon>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="relatorios\RelatorioDocumentoAF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="relatorios\RelatorioDocumentoAF.Designer.cs">
+      <DependentUpon>RelatorioDocumentoAF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="repositorio\CategoriaDAO.cs" />
+    <Compile Include="repositorio\AvisoLancamentoDAO.cs" />
+    <Compile Include="repositorio\OrdemServicoDAO.cs" />
+    <Compile Include="repositorio\ItemAvisoLancamentoDAO.cs" />
+    <Compile Include="repositorio\FuncionalidadeDAO.cs" />
+    <Compile Include="repositorio\DAO.cs" />
+    <Compile Include="repositorio\CotacaoPrecoDAO.cs" />
+    <Compile Include="repositorio\EntradaDAO.cs" />
+    <Compile Include="repositorio\FornecedorDAO.cs" />
+    <Compile Include="repositorio\ObraDAO.cs" />
+    <Compile Include="repositorio\ClienteDAO.cs" />
+    <Compile Include="repositorio\SaidaDAO.cs" />
+    <Compile Include="repositorio\UsuarioDAO.cs" />
+    <Compile Include="repositorio\UtilizacaoDAO.cs" />
+    <Compile Include="TelaInicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaInicial.Designer.cs">
+      <DependentUpon>TelaInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="util\Log.cs" />
+    <Compile Include="util\ManipulaCampos.cs" />
+    <Compile Include="vitalDataSet.cs">
+      <DependentUpon>vitalDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="vitalDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vitalDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="vitalDataSet1.cs">
+      <DependentUpon>vitalDataSet1.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="vitalDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vitalDataSet1.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

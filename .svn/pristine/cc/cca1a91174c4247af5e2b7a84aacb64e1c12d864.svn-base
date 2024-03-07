@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class Utilizacao
+    {
+        int idUtilizacao;
+        string nome;
+        string prefixo;
+
+        public int IdUtilizacao
+        {
+            get { return idUtilizacao; }
+            set { idUtilizacao = value; }
+        }
+
+        public string Nome
+        {
+            get { return nome; }
+            set { nome = value; }
+        }
+
+        public string Prefixo
+        {
+            get { return prefixo; }
+            set { prefixo = value; }
+        }
+
+    }
+}

@@ -1,0 +1,3 @@
+drop table ordem_servico;
+drop table cliente;
+drop table usuario;

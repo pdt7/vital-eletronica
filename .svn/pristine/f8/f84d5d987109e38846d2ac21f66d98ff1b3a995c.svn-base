@@ -1,0 +1,88 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MySql.Data.MySqlClient;
+using SVC_1.entidades;
+using SVC_1.util;
+using System.Windows.Forms;
+using INFIT.docs;
+
+namespace SVC_1.repositorio
+{
+    class OrdemServicoDAO : DAO
+    {
+
+        public int cadastrar(OrdemServico ordemServico)
+        {
+
+            int idOrdemServico = 0;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+
+                String strCmd = " INSERT INTO ordem_servico(aparelho, marca, modelo, sintoma, observacoes, " +
+                                   " info_adicional, data_entrada, data_saida, valor, id_cliente) " +
+                                " VALUES (@aparelho, @marca, @modelo, @sintoma, @observacoes, " +
+                                " @info_adicional, @data_entrada, @data_saida, @valor, @id_cliente);";
+
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@aparelho", ordemServico.Aparelho);
+                cmd.Parameters.AddWithValue("@marca", ordemServico.Marca);
+                cmd.Parameters.AddWithValue("@modelo", ordemServico.Modelo);
+                cmd.Parameters.AddWithValue("@sintoma", ordemServico.Sintoma);
+                cmd.Parameters.AddWithValue("@observacoes", ordemServico.Obs);
+                cmd.Parameters.AddWithValue("@info_adicional", "");
+                cmd.Parameters.AddWithValue("@data_entrada", ordemServico.DataEntrada);
+                cmd.Parameters.AddWithValue("@data_saida", ordemServico.DataSaida);
+                cmd.Parameters.AddWithValue("@valor", ordemServico.Valor);
+                cmd.Parameters.AddWithValue("@id_cliente", ordemServico.Cliente.IdCliente);
+               
+                OpenConnection();
+                idOrdemServico = Insere(cmd, strCmd);
+                CloseConnection();
+                return idOrdemServico;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao Cadastrar a Ordem de Serviço. Favor contactar o suporte!!!");
+            }
+        }
+
+        public decimal consultarApurado(DateTime inicio, DateTime fim)
+        {
+
+            decimal valor = 0M;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+
+                String strCmd = " SELECT FORMAT(SUM(VALOR),2) AS apurado FROM ORDEM_SERVICO " + 
+                                " WHERE DATA_SAIDA BETWEEN @dataInicio AND @dataFim;";
+
+                cmd.Parameters.Clear();
+
+                string dataInicio = ManipulaData.FormatarData(inicio, ManipulaData.HORA_INICIAL);
+                string dataFim = ManipulaData.FormatarData(fim, ManipulaData.HORA_FINAL);
+
+                cmd.Parameters.AddWithValue("@dataInicio", dataInicio);
+                cmd.Parameters.AddWithValue("@dataFim", dataFim);
+                OpenConnection();
+                MySqlDataReader dataReader = Pesquisa(cmd, strCmd);
+
+                if (dataReader.Read() && !dataReader["apurado"].ToString().Equals(""))
+                {
+                    string consulta = dataReader["apurado"].ToString();
+                    valor = Convert.ToDecimal(consulta);
+                }
+                
+                CloseConnection();
+                return valor;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao Consultar o valor apurado. Favor contactar o suporte!!!" + ex.Message);
+            }
+        }
+    }
+}

@@ -1,0 +1,136 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using SVC_1.repositorio;
+using SVC_1.entidades;
+
+namespace SVC_1.controladores
+{
+    class ControladorOrdemServico
+    {
+
+        private OrdemServicoDAO ordemServicoDAO;
+
+        public ControladorOrdemServico()
+        {
+            ordemServicoDAO = new OrdemServicoDAO();
+        }
+
+        public string cadastrar(string aparelho, string marca, string modelo, string sintoma, string observacao,
+            DateTime dataEntrada, DateTime dataSaida, double valor, int idCliente)
+        {
+            try
+            {
+                OrdemServico os = new OrdemServico();
+                os.Aparelho = aparelho;
+                os.Marca = marca;
+                os.Modelo = modelo;
+                os.Sintoma = sintoma;
+                os.Obs = observacao;
+                os.DataEntrada = dataEntrada;
+                os.DataSaida = dataSaida;
+                os.Valor = valor;
+                
+                Cliente cliente = new Cliente();
+                cliente.IdCliente = idCliente;
+                os.Cliente = cliente;
+                
+                ordemServicoDAO.cadastrar(os);
+            }
+            catch (Exception ex)
+            {
+
+                return "Não foi possível cadastrar a Ordem de Serviço!!" + ex.Message;
+            }
+
+            return "Ordem de Serviço cadastrado com sucesso!!!";
+        }
+
+        public bool existeProdutoPorNome(string nome, int idObra)
+        {
+            try
+            {
+                return false;// return produtoDAO.consultarProdutoPorNome(nome, idObra) != null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível Consultar o produto: " + ex.Message);
+            }
+        }
+
+        public string atualizar(Cliente produto)
+        {
+            try
+            {
+                //produtoDAO.atualizar(produto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível atualizar o produto: " + ex.Message);
+            }
+
+            return "Produto atualizado com sucesso!!!";
+        }
+
+        public decimal consultarApurado(DateTime inicio, DateTime fim)
+        {
+            try
+            {
+                return ordemServicoDAO.consultarApurado(inicio, fim);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível Consultar o Apurado: " + ex.Message);
+            }
+        }
+
+        public List<Cliente> consultarProduto(string valorConsulta, string parametro, int idObra)
+        {
+            try
+            {
+                if (idObra == 0)
+                {
+                    
+                }
+                else
+                {
+                    
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível Consultar o produto: " + ex.Message);
+            }
+        }
+
+        public string remover(int idProduto)
+        {
+            try
+            {
+                
+                return "Produto removido com sucesso!!!";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível Remover o produto: " + ex.Message);
+            }
+        }
+
+        public string atualizar(int idProduto, string nome, float quantidadeMinima, string codigo, int categoria, int idUnidadeMedida, int idObra)
+        {
+            try
+            {
+               
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível atualizar o produto: " + ex.Message);
+            }
+
+            return "Produto atualizado com sucesso!!!";
+        }
+
+    }
+}

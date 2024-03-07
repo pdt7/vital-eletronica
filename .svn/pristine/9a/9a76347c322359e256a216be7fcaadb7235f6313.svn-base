@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class Endereco
+    {
+        private int idEndereco;
+        private string rua;
+        private int numero;
+        private string cep;
+        private string bairro;
+        private List<Telefone> telefones;
+        private string uf;
+        private string cidade;
+
+        public Endereco()
+        {
+        }
+
+        public int IdEndereco
+        {
+            get { return idEndereco; }
+            set { idEndereco = value; }
+        }
+
+        public string Cidade
+        {
+            get { return cidade; }
+            set { cidade = value; }
+        }
+
+        public string Rua
+        {
+            get { return rua; }
+            set { rua = value; }
+        }
+
+        public int Numero
+        {
+            get { return numero; }
+            set { numero = value; }
+        }
+
+        public string Cep
+        {
+            get { return cep; }
+            set { cep = value; }
+        }
+
+        public string Bairro
+        {
+            get { return bairro; }
+            set { bairro = value; }
+        }
+
+        public List<Telefone> Telefones
+        {
+            get { return telefones; }
+            set { telefones = value; }
+        }
+
+        public string Uf
+        {
+            get { return uf; }
+            set { uf = value; }
+        }   
+    }
+}

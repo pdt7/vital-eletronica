@@ -1,0 +1,67 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class  AvisoLancamento
+    {
+        int idAviso;
+        int remessaMaterial;
+        int aviso;
+        Obra debito;
+        int idCredito;
+        String descDestinoCredito;
+        List<ItemAvisoLancamento> itens;
+        DateTime data;
+
+        public int IdAvisoLancamento
+        {
+            get { return idAviso; }
+            set { idAviso = value; }
+        }
+
+        public int RemessaMaterial
+        {
+            get {return remessaMaterial;}
+            set {remessaMaterial = value;}
+        }
+        
+        public int Aviso
+        {
+            get { return aviso; }
+            set { aviso = value; }
+        }
+
+        public Obra Debito
+        {
+            get { return debito; }
+            set { debito = value; }
+        }
+
+        public int IdCredito
+        {
+            get { return idCredito; }
+            set { idCredito = value; }
+        }
+
+        public String DestinoCredito
+        {
+            get { return descDestinoCredito; }
+            set { descDestinoCredito = value; }
+        }
+
+        public List<ItemAvisoLancamento> Itens
+        {
+            get { return itens; }
+            set { itens = value; }
+        }
+        public DateTime Data
+        {
+            get { return data; }
+            set { data = value; }
+        }
+
+    }
+}

@@ -1,0 +1,122 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Vital.util;
+using Vital.controladores;
+using Vital.entidades;
+
+namespace Vital.formularios
+{
+    public partial class FormularioCadastroCliente : Form
+    {
+        ControladorCliente controladorCliente;
+
+        public int idProduto;
+        public int idCategoria;
+        public int idUnidadeMedida;
+        public Cliente cliente = null;
+
+        public FormularioCadastroCliente()
+        {
+            InitializeComponent();
+            controladorCliente = new ControladorCliente();
+            idProduto = 0;
+            idCategoria = 0;
+            idUnidadeMedida = 0;
+        }
+
+        private void FormularioCadastroProduto_Load(object sender, EventArgs e)
+        {
+            if (cliente != null)
+            {
+                atualizarDados(cliente);
+                buttonAtualizar.Visible = true;
+                botaoCadastrar.Visible = false;
+
+            }
+        }
+
+        private void botaoLimpar_Click(object sender, EventArgs e)
+        {
+            ManipulaCampos.LimparCampos(this.groupBoxProduto);
+        }
+
+        private void botaoCadastrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nome = textNome.Text;
+                string cidade = textCidade.Text;
+                string endereco = textEnd.Text;
+                string bairro = textBairro.Text;
+                string telefone = textTelefone.Text;
+                string complemento = textComp.Text;
+                int numero = Convert.ToInt32(textNum.Text);
+                                
+                if (nome == "")
+                {
+                    throw new Exception("O campo nome precisa ser informado!");
+                }
+
+                MessageBox.Show(controladorCliente.cadastrar(nome, cidade, endereco, bairro, telefone, complemento, numero));
+                ManipulaCampos.LimparCampos(groupBoxProduto);
+          
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void botaoCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        public void atualizarDados(Cliente cliente)
+        {
+            textNome.Text = cliente.Nome;
+            textEnd.Text = cliente.Endereco;
+            textNum.Text = cliente.Numero.ToString();
+            textBairro.Text = cliente.Bairro;
+            textCidade.Text = cliente.Cidade;
+            textComp.Text = cliente.Complemento;
+            textTelefone.Text = cliente.Telefone;
+        }
+
+        private void buttonAtualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cliente.Nome = textNome.Text;
+                cliente.Cidade = textCidade.Text;
+                cliente.Endereco = textEnd.Text;
+                cliente.Bairro = textBairro.Text;
+                cliente.Telefone = textTelefone.Text;
+                cliente.Complemento = textComp.Text;
+                cliente.Numero = Convert.ToInt32(textNum.Text);
+
+                if (cliente.Nome == "")
+                {
+                    throw new Exception("O campo nome precisa ser informado!");
+                }
+
+                MessageBox.Show(controladorCliente.atualizar(cliente));
+                ManipulaCampos.LimparCampos(groupBoxProduto);
+                this.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+    }
+}

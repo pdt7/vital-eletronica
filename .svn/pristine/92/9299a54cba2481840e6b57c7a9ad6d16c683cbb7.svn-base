@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class ItemSaida
+    {
+        int idItemSaida;
+        float quantidade;
+        Cliente produto;
+        Utilizacao utilizacao;
+        Saida saida;
+
+        public int IdItemSaida
+        {
+            get { return idItemSaida; }
+            set { idItemSaida = value; }
+        }
+
+        public float Quantidade
+        {
+            get { return quantidade; }
+            set { quantidade = value; }
+        }
+
+        public Cliente Produto
+        {
+            get { return produto; }
+            set { produto = value; }
+        }
+
+        public Utilizacao Utilizacao
+        {
+            get { return utilizacao; }
+            set { utilizacao = value; }
+        }
+
+        public Saida Saida
+        {
+            get { return saida; }
+            set { saida = value; }
+        }
+    }
+}

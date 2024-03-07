@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SVC_1.entidades
+{
+    public class ItemAvisoLancamento
+    {
+
+        string discriminacao;
+        UnidadeMedida unidadeMedida;
+        Utilizacao utilizacao;
+        float precoUnitario;
+        float quantidade;
+        string observacao;
+        int numeroCP;
+        AvisoLancamento avisoLancamento;
+
+        public string Discriminacao
+        {
+            get { return discriminacao; }
+            set { discriminacao = value; }
+        }
+        public UnidadeMedida UnidadeMedida
+        {
+            get { return unidadeMedida; }
+            set { unidadeMedida = value; }
+        }
+        public Utilizacao Utilizacao
+        {
+            get { return utilizacao; }
+            set { utilizacao = value; }
+        }
+        public float PrecoUnitario
+        {
+            get { return precoUnitario; }
+            set { precoUnitario = value; }
+        }
+        public float Quantidade
+        {
+            get { return quantidade; }
+            set { quantidade = value; }
+        }
+        public String Observacao
+        {
+            get { return observacao; }
+            set { observacao = value; }
+        }
+        public int NumeroCP
+        {
+            get { return numeroCP; }
+            set { numeroCP = value; }
+        }
+        public AvisoLancamento AvisoLancamento
+        {
+            get { return avisoLancamento; }
+            set { avisoLancamento = value; }
+        }
+
+    }
+}

@@ -1,0 +1,13 @@
+﻿namespace SVC_1 {
+    
+    
+    public partial class vitalDataSet {
+    }
+}
+
+namespace SVC_1.vitalDataSetTableAdapters {
+    
+    
+    public partial class clienteTableAdapter {
+    }
+}
